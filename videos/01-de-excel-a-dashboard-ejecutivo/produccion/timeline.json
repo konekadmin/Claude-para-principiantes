@@ -1,0 +1,690 @@
+{
+ "inicio": 0.6,
+ "items": {
+  "h1a": {
+   "sec": "hook",
+   "start": 0.6,
+   "end": 1.21,
+   "text": "Esto…",
+   "tts": "Esto."
+  },
+  "h1b": {
+   "sec": "hook",
+   "start": 1.56,
+   "end": 2.35,
+   "text": "era esto.",
+   "tts": "era esto."
+  },
+  "h1c": {
+   "sec": "hook",
+   "start": 2.65,
+   "end": 7.96,
+   "text": "Una hoja de Excel exportada del sistema, la misma que tienes tú todos los meses.",
+   "tts": "Una hoja de Excel exportada del sistema, la misma que tienes tú todos los meses."
+  },
+  "h2a": {
+   "sec": "hook",
+   "start": 8.56,
+   "end": 12.13,
+   "text": "Y esto es lo que Claude hizo con ella en menos de cinco minutos.",
+   "tts": "Y esto es lo que Clod hizo con ella en menos de cinco minutos."
+  },
+  "h2b": {
+   "sec": "hook",
+   "start": 12.43,
+   "end": 18.79,
+   "text": "Sin Power BI, sin programar una línea, sin pelearme con PowerPoint a las once de la noche.",
+   "tts": "Sin Páuer Bi Ái, sin programar una línea, sin pelearme con Páuer Point a las once de la noche."
+  },
+  "h3a": {
+   "sec": "hook",
+   "start": 19.39,
+   "end": 22.2,
+   "text": "Pero lo que te voy a mostrar hoy no es el dashboard.",
+   "tts": "Pero lo que te voy a mostrar hoy no es el dashbord."
+  },
+  "h3b": {
+   "sec": "hook",
+   "start": 22.45,
+   "end": 27.82,
+   "text": "Es el prompt de dos pasos que hace que Claude piense como un analista antes de diseñar.",
+   "tts": "Es el prompt de dos pasos que hace que Clod piense como un analista antes de diseñar."
+  },
+  "h3c": {
+   "sec": "hook",
+   "start": 28.12,
+   "end": 33.16,
+   "text": "Ese prompt funciona con ventas, con gastos, con inventario, con lo que tengas.",
+   "tts": "Ese prompt funciona con ventas, con gastos, con inventario, con lo que tengas."
+  },
+  "h3d": {
+   "sec": "hook",
+   "start": 33.46,
+   "end": 41.72,
+   "text": "Quédate hasta el final, porque ahí está la diferencia entre un gráfico bonito y una herramienta que tu gerente realmente usa.",
+   "tts": "Quédate hasta el final, porque ahí está la diferencia entre un gráfico bonito y una herramienta que tu gerente realmente usa."
+  },
+  "logo": {
+   "sec": "hook",
+   "start": 42.12,
+   "end": 44.52,
+   "gap": true
+  },
+  "p1a": {
+   "sec": "problema",
+   "start": 44.52,
+   "end": 45.69,
+   "text": "Seamos honestos.",
+   "tts": "Seamos honestos."
+  },
+  "p1b": {
+   "sec": "problema",
+   "start": 45.99,
+   "end": 62.71,
+   "text": "El cierre de mes en la mayoría de empresas se ve así: bajas el reporte del ERP, lo pasas a Excel, armas tablas dinámicas, copias los gráficos a PowerPoint y rezas para que nadie pregunte: «¿y esto por qué subió?».",
+   "tts": "El cierre de mes en la mayoría de empresas se ve así: bajas el reporte del e erre pe, lo pasas a Excel, armas tablas dinámicas, copias los gráficos a Páuer Point y rezas para que nadie pregunte: ¿y esto por qué subió?."
+  },
+  "p2a": {
+   "sec": "problema",
+   "start": 63.26,
+   "end": 66.88,
+   "text": "Son horas, a veces días, solo para mostrar números.",
+   "tts": "Son horas, a veces días, solo para mostrar números."
+  },
+  "p2b": {
+   "sec": "problema",
+   "start": 67.18,
+   "end": 74.95,
+   "text": "Y lo peor es que el resultado casi nunca responde lo que la gerencia quiere saber: dónde está el problema y qué hacemos.",
+   "tts": "Y lo peor es que el resultado casi nunca responde lo que la gerencia quiere saber: dónde está el problema y qué hacemos."
+  },
+  "p3a": {
+   "sec": "problema",
+   "start": 75.5,
+   "end": 81.01,
+   "text": "Muchos ya probaron pedirle a una inteligencia artificial: «hazme un dashboard».",
+   "tts": "Muchos ya probaron pedirle a una inteligencia artificial: hazme un dashbord."
+  },
+  "p3b": {
+   "sec": "problema",
+   "start": 81.31,
+   "end": 82.31,
+   "text": "Y sí, sale algo.",
+   "tts": "Y sí, sale algo."
+  },
+  "p3c": {
+   "sec": "problema",
+   "start": 82.56,
+   "end": 92.69,
+   "text": "Pero sale genérico: gráficos que no cuentan una historia, KPIs que nadie pidió, y un diseño que no aguanta una reunión con el CFO.",
+   "tts": "Pero sale genérico: gráficos que no cuentan una historia, kei pi áis que nadie pidió, y un diseño que no aguanta una reunión con el ce efe o."
+  },
+  "p4a": {
+   "sec": "problema",
+   "start": 93.24,
+   "end": 94.98,
+   "text": "El problema no es la herramienta.",
+   "tts": "El problema no es la herramienta."
+  },
+  "p4b": {
+   "sec": "problema",
+   "start": 95.23,
+   "end": 97.37,
+   "text": "Es cómo le estamos pidiendo las cosas.",
+   "tts": "Es cómo le estamos pidiendo las cosas."
+  },
+  "d1a": {
+   "sec": "datos",
+   "start": 98.37,
+   "end": 99.47,
+   "text": "Este es el archivo.",
+   "tts": "Este es el archivo."
+  },
+  "d1b": {
+   "sec": "datos",
+   "start": 99.72,
+   "end": 106.93,
+   "text": "Una exportación del ERP con el gasto por área y por categoría, este año contra el año pasado.",
+   "tts": "Una exportación del e erre pe con el gasto por área y por categoría, este año contra el año pasado."
+  },
+  "d1c": {
+   "sec": "datos",
+   "start": 107.23,
+   "end": 108.42,
+   "text": "Nada del otro mundo.",
+   "tts": "Nada del otro mundo."
+  },
+  "d1d": {
+   "sec": "datos",
+   "start": 108.72,
+   "end": 124.27,
+   "text": "Los datos son ficticios, y ojo con esto: si vas a usar datos reales de tu empresa, revisa antes qué políticas tiene tu organización sobre subir información a herramientas de inteligencia artificial.",
+   "tts": "Los datos son ficticios, y ojo con esto: si vas a usar datos reales de tu empresa, revisa antes qué políticas tiene tu organización sobre subir información a herramientas de inteligencia artificial."
+  },
+  "tipeo1": {
+   "sec": "paso1",
+   "start": 125.07,
+   "end": 127.87,
+   "gap": true
+  },
+  "s1a": {
+   "sec": "paso1",
+   "start": 127.87,
+   "end": 133.0,
+   "text": "Fíjate en tres cosas: le digo quién soy, para qué es y qué gráficos quiero.",
+   "tts": "Fíjate en tres cosas: le digo quién soy, para qué es y qué gráficos quiero."
+  },
+  "s1b": {
+   "sec": "paso1",
+   "start": 133.3,
+   "end": 134.42,
+   "text": "Adjunto el archivo…",
+   "tts": "Adjunto el archivo."
+  },
+  "s1c": {
+   "sec": "paso1",
+   "start": 134.77,
+   "end": 135.58,
+   "text": "y listo.",
+   "tts": "y listo."
+  },
+  "genera1": {
+   "sec": "paso1",
+   "start": 135.78,
+   "end": 139.38,
+   "gap": true
+  },
+  "s2a": {
+   "sec": "paso1",
+   "start": 139.38,
+   "end": 140.96,
+   "text": "Ya tenemos algo muy usable.",
+   "tts": "Ya tenemos algo muy usable."
+  },
+  "s2b": {
+   "sec": "paso1",
+   "start": 141.21,
+   "end": 145.64,
+   "text": "El total, la variación, qué área explica la mayor parte del cambio.",
+   "tts": "El total, la variación, qué área explica la mayor parte del cambio."
+  },
+  "s2c": {
+   "sec": "paso1",
+   "start": 145.99,
+   "end": 150.21,
+   "text": "Y mi favorito: este mapa de calor que cruza área con categoría.",
+   "tts": "Y mi favorito: este mapa de calor que cruza área con categoría."
+  },
+  "s2d": {
+   "sec": "paso1",
+   "start": 150.51,
+   "end": 152.77,
+   "text": "En un vistazo ves dónde está el dolor.",
+   "tts": "En un vistazo ves dónde está el dolor."
+  },
+  "s2e": {
+   "sec": "paso1",
+   "start": 153.07,
+   "end": 154.69,
+   "text": "Esto en una reunión vale oro.",
+   "tts": "Esto en una reunión vale oro."
+  },
+  "s3a": {
+   "sec": "paso1",
+   "start": 155.24,
+   "end": 159.02,
+   "text": "Pero aquí está la trampa: este dashboard tiene lo que yo pedí.",
+   "tts": "Pero aquí está la trampa: este dashbord tiene lo que yo pedí."
+  },
+  "s3b": {
+   "sec": "paso1",
+   "start": 159.32,
+   "end": 162.32,
+   "text": "Y yo no siempre sé qué es lo mejor que se puede mostrar.",
+   "tts": "Y yo no siempre sé qué es lo mejor que se puede mostrar."
+  },
+  "s3c": {
+   "sec": "paso1",
+   "start": 162.62,
+   "end": 163.93,
+   "text": "Ahí entra el paso dos.",
+   "tts": "Ahí entra el paso dos."
+  },
+  "q1a": {
+   "sec": "paso2",
+   "start": 164.93,
+   "end": 171.0,
+   "text": "En el mismo chat, en lugar de pedirle un dashboard, le pido que primero analice y me proponga.",
+   "tts": "En el mismo chat, en lugar de pedirle un dashbord, le pido que primero analice y me proponga."
+  },
+  "q1b": {
+   "sec": "paso2",
+   "start": 171.3,
+   "end": 173.01,
+   "text": "El prompt tiene cinco partes.",
+   "tts": "El prompt tiene cinco partes."
+  },
+  "q1c": {
+   "sec": "paso2",
+   "start": 173.26,
+   "end": 175.85,
+   "text": "Te las dejo en pantalla y en la descripción.",
+   "tts": "Te las dejo en pantalla y en la descripción."
+  },
+  "q1d": {
+   "sec": "paso2",
+   "start": 176.35,
+   "end": 176.87,
+   "text": "Rol.",
+   "tts": "Rol."
+  },
+  "q1e": {
+   "sec": "paso2",
+   "start": 177.97,
+   "end": 178.62,
+   "text": "Datos.",
+   "tts": "Dátos."
+  },
+  "q1f": {
+   "sec": "paso2",
+   "start": 179.72,
+   "end": 180.56,
+   "text": "Objetivo.",
+   "tts": "Objetivo."
+  },
+  "q1g": {
+   "sec": "paso2",
+   "start": 181.66,
+   "end": 182.53,
+   "text": "Análisis.",
+   "tts": "Análisis."
+  },
+  "q1h": {
+   "sec": "paso2",
+   "start": 183.63,
+   "end": 184.38,
+   "text": "Propuesta.",
+   "tts": "Propuesta."
+  },
+  "q2a": {
+   "sec": "paso2",
+   "start": 185.58,
+   "end": 186.29,
+   "text": "¿Qué cambia?",
+   "tts": "¿Qué cambia?"
+  },
+  "q2b": {
+   "sec": "paso2",
+   "start": 186.59,
+   "end": 188.0,
+   "text": "Que ya no le pido un dibujo.",
+   "tts": "Que ya no le pido un dibujo."
+  },
+  "q2c": {
+   "sec": "paso2",
+   "start": 188.25,
+   "end": 197.76,
+   "text": "Le pido que piense como un analista que le va a presentar al directorio: primero entender, después proponer, al final construir.",
+   "tts": "Le pido que piense como un analista que le va a presentar al directorio: primero entender, después proponer, al final construir."
+  },
+  "genera2": {
+   "sec": "paso2",
+   "start": 198.06,
+   "end": 203.56,
+   "gap": true
+  },
+  "q3a": {
+   "sec": "paso2",
+   "start": 203.56,
+   "end": 204.71,
+   "text": "Mira la diferencia.",
+   "tts": "Mira la diferencia."
+  },
+  "q3b": {
+   "sec": "paso2",
+   "start": 205.06,
+   "end": 209.04,
+   "text": "Ahora hay narrativa: frases que explican qué pasó y por qué.",
+   "tts": "Ahora hay narrativa: frases que explican qué pasó y por qué."
+  },
+  "q3c": {
+   "sec": "paso2",
+   "start": 209.34,
+   "end": 210.7,
+   "text": "Hay filtros por área.",
+   "tts": "Hay filtros por área."
+  },
+  "q3d": {
+   "sec": "paso2",
+   "start": 211.6,
+   "end": 217.37,
+   "text": "Hay métricas que yo ni había pensado, como el peso de cada categoría en el gasto total.",
+   "tts": "Hay métricas que yo ni había pensado, como el peso de cada categoría en el gasto total."
+  },
+  "q3e": {
+   "sec": "paso2",
+   "start": 217.67,
+   "end": 223.55,
+   "text": "Esto ya no es un reporte; es una historia financiera que se puede discutir en la reunión.",
+   "tts": "Esto ya no es un reporte; es una historia financiera que se puede discutir en la reunión."
+  },
+  "i0": {
+   "sec": "ideas",
+   "start": 224.55,
+   "end": 228.0,
+   "text": "Si te quedas con tres cosas de este video, que sean estas.",
+   "tts": "Si te quedas con tres cosas de este video, que sean estas."
+  },
+  "i1t": {
+   "sec": "ideas",
+   "start": 228.6,
+   "end": 231.5,
+   "text": "Uno: primero que piense, después que construya.",
+   "tts": "Uno: primero que piense, después que construya."
+  },
+  "i1a": {
+   "sec": "ideas",
+   "start": 231.95,
+   "end": 236.49,
+   "text": "La diferencia entre el primer y el segundo dashboard no fue el diseño.",
+   "tts": "La diferencia entre el primer y el segundo dashbord no fue el diseño."
+  },
+  "i1b": {
+   "sec": "ideas",
+   "start": 236.74,
+   "end": 239.91,
+   "text": "Fue que en el segundo le pedí analizar antes de crear.",
+   "tts": "Fue que en el segundo le pedí analizar antes de crear."
+  },
+  "i1c": {
+   "sec": "ideas",
+   "start": 240.21,
+   "end": 246.44,
+   "text": "Cuando le das a Claude espacio para entender los datos, te propone cosas que tú no habrías pedido.",
+   "tts": "Cuando le das a Clod espacio para entender los datos, te propone cosas que tú no habrías pedido."
+  },
+  "i1d": {
+   "sec": "ideas",
+   "start": 246.74,
+   "end": 252.33,
+   "text": "Esto sirve para dashboards, para informes, para presentaciones… para casi todo.",
+   "tts": "Esto sirve para dashbords, para informes, para presentaciones, para casi todo."
+  },
+  "i2t": {
+   "sec": "ideas",
+   "start": 253.03,
+   "end": 259.17,
+   "text": "Dos: el prompt tiene estructura: rol, datos, objetivo, análisis y propuesta.",
+   "tts": "Dos: el prompt tiene estructura: rol, datos, objetivo, análisis y propuesta."
+  },
+  "i2a": {
+   "sec": "ideas",
+   "start": 259.62,
+   "end": 260.89,
+   "text": "No es magia, es método.",
+   "tts": "No es magia, es método."
+  },
+  "i2b": {
+   "sec": "ideas",
+   "start": 261.19,
+   "end": 268.56,
+   "text": "Le dices quién debe ser, qué tiene en las manos, para quién es el resultado, qué debe revisar y qué debe entregarte.",
+   "tts": "Le dices quién debe ser, qué tiene en las manos, para quién es el resultado, qué debe revisar y qué debe entregarte."
+  },
+  "i2c": {
+   "sec": "ideas",
+   "start": 268.86,
+   "end": 270.35,
+   "text": "Guarda esa plantilla.",
+   "tts": "Guarda esa plantilla."
+  },
+  "i2d": {
+   "sec": "ideas",
+   "start": 270.6,
+   "end": 276.52,
+   "text": "Cambias el archivo y la reutilizas con ventas, cobranzas, inventario o lo que necesites.",
+   "tts": "Cambias el archivo y la reutilizas con ventas, cobranzas, inventario o lo que necesites."
+  },
+  "i3t": {
+   "sec": "ideas",
+   "start": 277.22,
+   "end": 284.6,
+   "text": "Tres: la inteligencia artificial hace el 80 %; tú pones el criterio y la validación.",
+   "tts": "Tres: la inteligencia artificial hace el ochenta por ciento; tú pones el criterio y la validación."
+  },
+  "i3a": {
+   "sec": "ideas",
+   "start": 285.05,
+   "end": 290.39,
+   "text": "Claude te arma el dashboard en minutos, pero el que se para frente al gerente eres tú.",
+   "tts": "Clod te arma el dashbord en minutos, pero el que se para frente al gerente eres tú."
+  },
+  "i3b": {
+   "sec": "ideas",
+   "start": 290.69,
+   "end": 299.74,
+   "text": "Antes de presentar, revisa que los totales cuadren con tu Excel, que los insights tengan sentido de negocio y que no haya cifras inventadas.",
+   "tts": "Antes de presentar, revisa que los totales cuadren con tu Excel, que los insights tengan sentido de negocio y que no haya cifras inventadas."
+  },
+  "i3c": {
+   "sec": "ideas",
+   "start": 300.04,
+   "end": 304.5,
+   "text": "Pídele incluso que te muestre cómo calculó cada uno de los KPIs.",
+   "tts": "Pídele incluso que te muestre cómo calculó cada uno de los kei pi áis."
+  },
+  "i3d": {
+   "sec": "ideas",
+   "start": 304.8,
+   "end": 309.71,
+   "text": "La velocidad no sirve si pierdes la confianza en la primera pregunta.",
+   "tts": "La velocidad no sirve si pierdes la confianza en la primera pregunta."
+  },
+  "resumen": {
+   "sec": "ideas",
+   "start": 310.11,
+   "end": 313.71,
+   "gap": true
+  },
+  "c1a": {
+   "sec": "cta",
+   "start": 313.71,
+   "end": 316.15,
+   "text": "Te dejé los dos prompts en la descripción.",
+   "tts": "Te dejé los dos prompts en la descripción."
+  },
+  "c1b": {
+   "sec": "cta",
+   "start": 316.45,
+   "end": 333.82,
+   "text": "Pero si quieres ir un paso más allá, en nuestra comunidad tenemos la plantilla completa del prompt de cinco partes, adaptada para ventas, gastos, cobranzas e inventario, más el archivo de ejemplo para que practiques sin usar datos de tu empresa.",
+   "tts": "Pero si quieres ir un paso más allá, en nuestra comunidad tenemos la plantilla completa del prompt de cinco partes, adaptada para ventas, gastos, cobranzas e inventario, más el archivo de ejemplo para que practiques sin usar datos de tu empresa."
+  },
+  "c2a": {
+   "sec": "cta",
+   "start": 334.32,
+   "end": 343.07,
+   "text": "Ahí también compartimos casos reales de cómo estamos aplicando Claude en empresas, y puedes preguntar directamente sobre tu caso.",
+   "tts": "Ahí también compartimos casos reales de cómo estamos aplicando Clod en empresas, y puedes preguntar directamente sobre tu caso."
+  },
+  "c2b": {
+   "sec": "cta",
+   "start": 343.37,
+   "end": 345.01,
+   "text": "El link está en la descripción.",
+   "tts": "El link está en la descripción."
+  },
+  "c3a": {
+   "sec": "cta",
+   "start": 345.51,
+   "end": 355.73,
+   "text": "Y si en tu empresa necesitan llevar esto a otro nivel, con dashboards conectados a sus propios datos o automatizaciones a medida, también lo hacemos.",
+   "tts": "Y si en tu empresa necesitan llevar esto a otro nivel, con dashbords conectados a sus propios datos o automatizaciones a medida, también lo hacemos."
+  },
+  "c3b": {
+   "sec": "cta",
+   "start": 356.03,
+   "end": 357.78,
+   "text": "Escríbenos desde el mismo link.",
+   "tts": "Escríbenos desde el mismo link."
+  },
+  "c4a": {
+   "sec": "cta",
+   "start": 358.38,
+   "end": 364.68,
+   "text": "Ahora, un favor rápido: déjame en los comentarios qué reporte te quita más tiempo cada mes.",
+   "tts": "Ahora, un favor rápido: déjame en los comentarios qué reporte te quita más tiempo cada mes."
+  },
+  "c4b": {
+   "sec": "cta",
+   "start": 364.98,
+   "end": 367.75,
+   "text": "Con esas respuestas armo los próximos videos.",
+   "tts": "Con esas respuestas armo los próximos videos."
+  },
+  "e1a": {
+   "sec": "cierre",
+   "start": 368.75,
+   "end": 374.66,
+   "text": "Hoy pasamos de un Excel exportado a un dashboard que puedes llevar a cualquier reunión.",
+   "tts": "Hoy pasamos de un Excel exportado a un dashbord que puedes llevar a cualquier reunión."
+  },
+  "e1b": {
+   "sec": "cierre",
+   "start": 374.96,
+   "end": 379.2,
+   "text": "Pero hay un detalle: el próximo mes vas a tener que hacerlo otra vez.",
+   "tts": "Pero hay un detalle: el próximo mes vas a tener que hacerlo otra vez."
+  },
+  "e1c": {
+   "sec": "cierre",
+   "start": 379.5,
+   "end": 381.89,
+   "text": "Nuevo archivo, nuevo chat, nuevo prompt.",
+   "tts": "Nuevo archivo, nuevo chat, nuevo prompt."
+  },
+  "e2a": {
+   "sec": "cierre",
+   "start": 382.49,
+   "end": 384.42,
+   "text": "¿Y si no tuvieras que hacerlo nunca más?",
+   "tts": "¿Y si no tuvieras que hacerlo nunca más?"
+  },
+  "e2b": {
+   "sec": "cierre",
+   "start": 384.82,
+   "end": 402.05,
+   "text": "En el siguiente video te muestro cómo convertir este dashboard en un reporte que se actualiza solo cada mes: subes el archivo nuevo, o mejor aún, lo conectas a tus datos, y Claude hace el resto, incluida la narrativa para gerencia.",
+   "tts": "En el siguiente video te muestro cómo convertir este dashbord en un reporte que se actualiza solo cada mes: subes el archivo nuevo, o mejor aún, lo conectas a tus datos, y Clod hace el resto, incluida la narrativa para gerencia."
+  },
+  "e3a": {
+   "sec": "cierre",
+   "start": 402.45,
+   "end": 403.84,
+   "text": "El video está aquí arriba.",
+   "tts": "El video está aquí arriba."
+  },
+  "e3b": {
+   "sec": "cierre",
+   "start": 404.09,
+   "end": 404.96,
+   "text": "Nos vemos ahí.",
+   "tts": "Nos vemos ahí."
+  },
+  "endscreen": {
+   "sec": "cierre",
+   "start": 405.36,
+   "end": 425.36,
+   "gap": true
+  }
+ },
+ "orden": [
+  "h1a",
+  "h1b",
+  "h1c",
+  "h2a",
+  "h2b",
+  "h3a",
+  "h3b",
+  "h3c",
+  "h3d",
+  "logo",
+  "p1a",
+  "p1b",
+  "p2a",
+  "p2b",
+  "p3a",
+  "p3b",
+  "p3c",
+  "p4a",
+  "p4b",
+  "d1a",
+  "d1b",
+  "d1c",
+  "d1d",
+  "tipeo1",
+  "s1a",
+  "s1b",
+  "s1c",
+  "genera1",
+  "s2a",
+  "s2b",
+  "s2c",
+  "s2d",
+  "s2e",
+  "s3a",
+  "s3b",
+  "s3c",
+  "q1a",
+  "q1b",
+  "q1c",
+  "q1d",
+  "q1e",
+  "q1f",
+  "q1g",
+  "q1h",
+  "q2a",
+  "q2b",
+  "q2c",
+  "genera2",
+  "q3a",
+  "q3b",
+  "q3c",
+  "q3d",
+  "q3e",
+  "i0",
+  "i1t",
+  "i1a",
+  "i1b",
+  "i1c",
+  "i1d",
+  "i2t",
+  "i2a",
+  "i2b",
+  "i2c",
+  "i2d",
+  "i3t",
+  "i3a",
+  "i3b",
+  "i3c",
+  "i3d",
+  "resumen",
+  "c1a",
+  "c1b",
+  "c2a",
+  "c2b",
+  "c3a",
+  "c3b",
+  "c4a",
+  "c4b",
+  "e1a",
+  "e1b",
+  "e1c",
+  "e2a",
+  "e2b",
+  "e3a",
+  "e3b",
+  "endscreen"
+ ],
+ "duracion": 425.36
+}

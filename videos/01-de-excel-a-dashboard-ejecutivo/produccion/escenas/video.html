@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Video · De Excel a dashboard ejecutivo con Claude</title>
+<link rel="stylesheet" href="konek-viz.css">
+<link rel="stylesheet" href="video.css">
+</head>
+<body>
+<div id="stage"></div>
+<script src="data.js"></script>
+<script src="timeline.js"></script>
+<script src="konek-viz.js"></script>
+<script src="escenas.js"></script>
+<script>
+  // Vista previa en el navegador: ?t=segundos muestra un cuadro; sin parámetro reproduce en tiempo real.
+  (function () {
+    const q = new URLSearchParams(location.search);
+    if (q.get("captura")) return;
+    if (q.has("t")) { renderFrame(parseFloat(q.get("t"))); return; }
+    const t0 = performance.now();
+    (function loop(now) { renderFrame(((now - t0) / 1000) % VIDEO_DURATION); requestAnimationFrame(loop); })(t0);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+1
+00:00:00,600 --> 00:00:01,540
+Esto…
+
+2
+00:00:01,560 --> 00:00:02,630
+era esto.
+
+3
+00:00:02,650 --> 00:00:05,319
+Una hoja de Excel exportada del sistema,
+
+4
+00:00:05,339 --> 00:00:08,360
+la misma que tienes tú todos los meses.
+
+5
+00:00:08,560 --> 00:00:12,410
+Y esto es lo que Claude hizo con
+ella en menos de cinco minutos.
+
+6
+00:00:12,430 --> 00:00:15,126
+Sin Power BI, sin programar una línea,
+
+7
+00:00:15,146 --> 00:00:19,190
+sin pelearme con PowerPoint
+a las once de la noche.
+
+8
+00:00:19,390 --> 00:00:22,430
+Pero lo que te voy a mostrar
+hoy no es el dashboard.
+
+9
+00:00:22,450 --> 00:00:27,300
+Es el prompt de dos pasos que hace que
+Claude piense como un analista antes de
+
+10
+00:00:27,320 --> 00:00:28,100
+diseñar.
+
+11
+00:00:28,120 --> 00:00:33,440
+Ese prompt funciona con ventas, con
+gastos, con inventario, con lo que tengas.
+
+12
+00:00:33,460 --> 00:00:34,985
+Quédate hasta el final,
+
+13
+00:00:35,005 --> 00:00:40,223
+porque ahí está la diferencia entre un
+gráfico bonito y una herramienta que tu
+
+14
+00:00:40,243 --> 00:00:42,120
+gerente realmente usa.
+
+15
+00:00:44,520 --> 00:00:45,970
+Seamos honestos.
+
+16
+00:00:45,990 --> 00:00:50,190
+El cierre de mes en la
+mayoría de empresas se ve así:
+
+17
+00:00:50,210 --> 00:00:55,524
+bajas el reporte del ERP, lo pasas
+a Excel, armas tablas dinámicas,
+
+18
+00:00:55,544 --> 00:01:00,700
+copias los gráficos a PowerPoint
+y rezas para que nadie pregunte:
+
+19
+00:01:00,720 --> 00:01:03,110
+«¿y esto por qué subió?».
+
+20
+00:01:03,260 --> 00:01:07,160
+Son horas, a veces días,
+solo para mostrar números.
+
+21
+00:01:07,180 --> 00:01:12,057
+Y lo peor es que el resultado casi
+nunca responde lo que la gerencia quiere
+
+22
+00:01:12,077 --> 00:01:15,350
+saber: dónde está el
+problema y qué hacemos.
+
+23
+00:01:15,500 --> 00:01:19,507
+Muchos ya probaron pedirle a
+una inteligencia artificial:
+
+24
+00:01:19,527 --> 00:01:21,290
+«hazme un dashboard».
+
+25
+00:01:21,310 --> 00:01:22,540
+Y sí, sale algo.
+
+26
+00:01:22,560 --> 00:01:27,016
+Pero sale genérico: gráficos
+que no cuentan una historia,
+
+27
+00:01:27,036 --> 00:01:33,090
+KPIs que nadie pidió, y un diseño que
+no aguanta una reunión con el CFO.
+
+28
+00:01:33,240 --> 00:01:35,210
+El problema no es la herramienta.
+
+29
+00:01:35,230 --> 00:01:37,770
+Es cómo le estamos pidiendo las cosas.
+
+30
+00:01:38,370 --> 00:01:39,700
+Este es el archivo.
+
+31
+00:01:39,720 --> 00:01:44,559
+Una exportación del ERP con el
+gasto por área y por categoría,
+
+32
+00:01:44,579 --> 00:01:47,210
+este año contra el año pasado.
+
+33
+00:01:47,230 --> 00:01:48,700
+Nada del otro mundo.
+
+34
+00:01:48,720 --> 00:01:51,890
+Los datos son ficticios, y ojo con esto:
+
+35
+00:01:51,910 --> 00:01:55,159
+si vas a usar datos reales de tu empresa,
+
+36
+00:01:55,179 --> 00:02:01,060
+revisa antes qué políticas tiene tu
+organización sobre subir información a
+
+37
+00:02:01,080 --> 00:02:04,670
+herramientas de inteligencia artificial.
+
+38
+00:02:07,870 --> 00:02:13,280
+Fíjate en tres cosas: le digo quién
+soy, para qué es y qué gráficos quiero.
+
+39
+00:02:13,300 --> 00:02:14,750
+Adjunto el archivo…
+
+40
+00:02:14,770 --> 00:02:15,980
+y listo.
+
+41
+00:02:19,380 --> 00:02:21,190
+Ya tenemos algo muy usable.
+
+42
+00:02:21,210 --> 00:02:25,970
+El total, la variación, qué área
+explica la mayor parte del cambio.
+
+43
+00:02:25,990 --> 00:02:30,490
+Y mi favorito: este mapa de calor
+que cruza área con categoría.
+
+44
+00:02:30,510 --> 00:02:33,050
+En un vistazo ves dónde está el dolor.
+
+45
+00:02:33,070 --> 00:02:35,090
+Esto en una reunión vale oro.
+
+46
+00:02:35,240 --> 00:02:39,300
+Pero aquí está la trampa: este
+dashboard tiene lo que yo pedí.
+
+47
+00:02:39,320 --> 00:02:42,600
+Y yo no siempre sé qué es lo
+mejor que se puede mostrar.
+
+48
+00:02:42,620 --> 00:02:44,330
+Ahí entra el paso dos.
+
+49
+00:02:44,930 --> 00:02:48,239
+En el mismo chat, en lugar
+de pedirle un dashboard,
+
+50
+00:02:48,259 --> 00:02:51,280
+le pido que primero analice y me proponga.
+
+51
+00:02:51,300 --> 00:02:53,240
+El prompt tiene cinco partes.
+
+52
+00:02:53,260 --> 00:02:56,250
+Te las dejo en pantalla
+y en la descripción.
+
+53
+00:02:56,350 --> 00:02:57,270
+Rol.
+
+54
+00:02:57,970 --> 00:02:59,020
+Datos.
+
+55
+00:02:59,720 --> 00:03:00,960
+Objetivo.
+
+56
+00:03:01,660 --> 00:03:02,930
+Análisis.
+
+57
+00:03:03,630 --> 00:03:04,780
+Propuesta.
+
+58
+00:03:05,580 --> 00:03:06,570
+¿Qué cambia?
+
+59
+00:03:06,590 --> 00:03:08,230
+Que ya no le pido un dibujo.
+
+60
+00:03:08,250 --> 00:03:13,621
+Le pido que piense como un analista
+que le va a presentar al directorio:
+
+61
+00:03:13,641 --> 00:03:18,160
+primero entender, después
+proponer, al final construir.
+
+62
+00:03:23,560 --> 00:03:25,040
+Mira la diferencia.
+
+63
+00:03:25,060 --> 00:03:29,320
+Ahora hay narrativa: frases que
+explican qué pasó y por qué.
+
+64
+00:03:29,340 --> 00:03:31,100
+Hay filtros por área.
+
+65
+00:03:31,600 --> 00:03:34,062
+Hay métricas que yo ni había pensado,
+
+66
+00:03:34,082 --> 00:03:37,650
+como el peso de cada
+categoría en el gasto total.
+
+67
+00:03:37,670 --> 00:03:39,320
+Esto ya no es un reporte;
+
+68
+00:03:39,340 --> 00:03:43,950
+es una historia financiera que
+se puede discutir en la reunión.
+
+69
+00:03:44,550 --> 00:03:48,400
+Si te quedas con tres cosas
+de este video, que sean estas.
+
+70
+00:03:48,600 --> 00:03:51,900
+Uno: primero que piense,
+después que construya.
+
+71
+00:03:51,950 --> 00:03:56,720
+La diferencia entre el primer y el
+segundo dashboard no fue el diseño.
+
+72
+00:03:56,740 --> 00:04:00,190
+Fue que en el segundo le
+pedí analizar antes de crear.
+
+73
+00:04:00,210 --> 00:04:03,722
+Cuando le das a Claude espacio
+para entender los datos,
+
+74
+00:04:03,742 --> 00:04:06,720
+te propone cosas que tú no habrías pedido.
+
+75
+00:04:06,740 --> 00:04:09,730
+Esto sirve para dashboards, para informes,
+
+76
+00:04:09,750 --> 00:04:12,730
+para presentaciones… para casi todo.
+
+77
+00:04:13,030 --> 00:04:19,570
+Dos: el prompt tiene estructura: rol,
+datos, objetivo, análisis y propuesta.
+
+78
+00:04:19,620 --> 00:04:21,170
+No es magia, es método.
+
+79
+00:04:21,190 --> 00:04:26,041
+Le dices quién debe ser, qué tiene en
+las manos, para quién es el resultado,
+
+80
+00:04:26,061 --> 00:04:28,840
+qué debe revisar y qué debe entregarte.
+
+81
+00:04:28,860 --> 00:04:30,580
+Guarda esa plantilla.
+
+82
+00:04:30,600 --> 00:04:34,459
+Cambias el archivo y la
+reutilizas con ventas, cobranzas,
+
+83
+00:04:34,479 --> 00:04:36,920
+inventario o lo que necesites.
+
+84
+00:04:37,220 --> 00:04:41,290
+Tres: la inteligencia
+artificial hace el 80 %;
+
+85
+00:04:41,310 --> 00:04:45,000
+tú pones el criterio y la validación.
+
+86
+00:04:45,050 --> 00:04:47,480
+Claude te arma el dashboard en minutos,
+
+87
+00:04:47,500 --> 00:04:50,670
+pero el que se para
+frente al gerente eres tú.
+
+88
+00:04:50,690 --> 00:04:54,837
+Antes de presentar, revisa que
+los totales cuadren con tu Excel,
+
+89
+00:04:54,857 --> 00:05:00,020
+que los insights tengan sentido de
+negocio y que no haya cifras inventadas.
+
+90
+00:05:00,040 --> 00:05:04,780
+Pídele incluso que te muestre
+cómo calculó cada uno de los KPIs.
+
+91
+00:05:04,800 --> 00:05:10,110
+La velocidad no sirve si pierdes la
+confianza en la primera pregunta.
+
+92
+00:05:13,710 --> 00:05:16,430
+Te dejé los dos prompts en la descripción.
+
+93
+00:05:16,450 --> 00:05:19,014
+Pero si quieres ir un paso más allá,
+
+94
+00:05:19,034 --> 00:05:24,613
+en nuestra comunidad tenemos la plantilla
+completa del prompt de cinco partes,
+
+95
+00:05:24,633 --> 00:05:28,417
+adaptada para ventas, gastos,
+cobranzas e inventario,
+
+96
+00:05:28,437 --> 00:05:34,220
+más el archivo de ejemplo para que
+practiques sin usar datos de tu empresa.
+
+97
+00:05:34,320 --> 00:05:39,222
+Ahí también compartimos casos reales
+de cómo estamos aplicando Claude en
+
+98
+00:05:39,242 --> 00:05:43,350
+empresas, y puedes preguntar
+directamente sobre tu caso.
+
+99
+00:05:43,370 --> 00:05:45,410
+El link está en la descripción.
+
+100
+00:05:45,510 --> 00:05:49,244
+Y si en tu empresa necesitan
+llevar esto a otro nivel,
+
+101
+00:05:49,264 --> 00:05:54,389
+con dashboards conectados a sus propios
+datos o automatizaciones a medida,
+
+102
+00:05:54,409 --> 00:05:56,010
+también lo hacemos.
+
+103
+00:05:56,030 --> 00:05:58,180
+Escríbenos desde el mismo link.
+
+104
+00:05:58,380 --> 00:05:59,970
+Ahora, un favor rápido:
+
+105
+00:05:59,990 --> 00:06:04,960
+déjame en los comentarios qué
+reporte te quita más tiempo cada mes.
+
+106
+00:06:04,980 --> 00:06:08,150
+Con esas respuestas armo
+los próximos videos.
+
+107
+00:06:08,750 --> 00:06:14,090
+Hoy pasamos de un Excel exportado a un
+dashboard que puedes llevar a cualquier
+
+108
+00:06:14,110 --> 00:06:14,940
+reunión.
+
+109
+00:06:14,960 --> 00:06:19,480
+Pero hay un detalle: el próximo mes
+vas a tener que hacerlo otra vez.
+
+110
+00:06:19,500 --> 00:06:22,290
+Nuevo archivo, nuevo chat, nuevo prompt.
+
+111
+00:06:22,490 --> 00:06:24,800
+¿Y si no tuvieras que hacerlo nunca más?
+
+112
+00:06:24,820 --> 00:06:30,543
+En el siguiente video te muestro cómo
+convertir este dashboard en un reporte
+
+113
+00:06:30,563 --> 00:06:35,682
+que se actualiza solo cada mes:
+subes el archivo nuevo, o mejor aún,
+
+114
+00:06:35,702 --> 00:06:39,309
+lo conectas a tus datos,
+y Claude hace el resto,
+
+115
+00:06:39,329 --> 00:06:42,430
+incluida la narrativa para gerencia.
+
+116
+00:06:42,450 --> 00:06:44,070
+El video está aquí arriba.
+
+117
+00:06:44,090 --> 00:06:45,360
+Nos vemos ahí.

@@ -1,0 +1,46 @@
+De un Excel exportado del ERP a un dashboard ejecutivo en minutos, con Claude. Pero lo importante no es el dashboard: es el prompt de 2 pasos que hace que Claude piense como un analista antes de diseñar. Funciona con gastos, ventas, cobranzas, inventario… con lo que tengas.
+
+📥 Plantilla completa del prompt de 5 partes (ventas, gastos, cobranzas e inventario) + Excel de práctica, en la comunidad: [LINK_COMUNIDAD]
+🏢 ¿Dashboards conectados a los datos de tu empresa o automatizaciones a medida? Escríbenos desde el mismo link.
+
+⏱️ Capítulos
+0:00 De Excel a dashboard
+0:44 Por qué tus reportes no funcionan
+1:37 Los datos (paso 0)
+2:04 Demo: el prompt rápido
+2:44 Demo: el prompt de 5 partes
+3:44 Las 3 ideas clave
+5:13 Plantillas y comunidad
+6:08 Lo que viene
+
+🧩 PROMPT 1 · El prompt rápido
+Soy jefe de planeamiento financiero en una empresa comercial. Tengo que presentar el análisis de gastos por área del mes. Crea un dashboard en HTML con diseño moderno, oscuro y con efecto neón. Incluye: análisis por área, análisis por categoría y un gráfico de cascada (waterfall) con la variación frente al año pasado. Hazlo como el mejor diseñador de dashboards y programador web.
+
+🧠 PROMPT 2 · El prompt de 5 partes (en el mismo chat, con el Excel adjunto)
+ROL: Actúa como un experto en diseño de dashboards, análisis de datos y prompt engineering.
+
+DATOS: El Excel adjunto contiene los gastos de la empresa por área y categoría, comparando septiembre 2026 con septiembre 2025.
+
+OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que el gerente general y el CFO entiendan en menos de un minuto.
+
+ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas, lógica y las métricas más importantes. Valida que los totales cuadren.
+
+PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
+
+✅ Antes de presentar
+• Revisa que los totales cuadren con tu Excel.
+• Revisa que los insights tengan sentido de negocio y que no haya cifras inventadas.
+• Pídele a Claude que te muestre cómo calculó cada KPI.
+• Si vas a usar datos reales, revisa antes las políticas de tu organización sobre subir información a herramientas de IA.
+
+💬 ¿Qué reporte te quita más tiempo cada mes? Déjalo en los comentarios: con esas respuestas armo los próximos videos.
+
+📺 Próximo video: Tu reporte mensual se hace solo: automatiza dashboards con Claude.
+
+Inspiración: video de Nicolas Boucher, "Claude: Build Financial Dashboards in Minutes" (mayo 2026). La idea se adaptó; el ejemplo, los datos y los prompts son propios.
+
+Nota: los datos del ejemplo son ficticios. La interfaz de chat que aparece es una recreación; los dashboards se construyeron con Claude a partir del Excel de ejemplo. Narración con voz sintética (Supertonic 3).
+
+Konek | Finanzas & IA — Domina la tecnología para trabajar de forma más inteligente y tomar el control total de tu dinero. Te enseñamos a construir sistemas de gestión, automatizar procesos y tomar decisiones financieras con Inteligencia Artificial (Claude, ChatGPT y herramientas No-Code).
+
+#Claude #Excel #Dashboard

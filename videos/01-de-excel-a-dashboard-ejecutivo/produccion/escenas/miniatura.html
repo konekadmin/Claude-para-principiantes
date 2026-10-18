@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Miniatura · Excel a dashboard</title>
+<link rel="stylesheet" href="konek-viz.css">
+<style>
+  html, body { margin: 0; background: #070b14; }
+  #thumb {
+    position: relative; width: 1280px; height: 720px; overflow: hidden;
+    font-family: "Inter Display", Inter, sans-serif; color: #fff;
+    background: radial-gradient(700px 500px at 78% 70%, #22d3ee33, transparent 60%), radial-gradient(600px 400px at 10% 90%, #a78bfa22, transparent 60%), #070b14;
+  }
+  .abs { position: absolute; }
+  h1 { margin: 0; font-weight: 900; font-size: 112px; letter-spacing: -0.035em; line-height: 0.95; text-shadow: 0 6px 30px #000a; }
+  h1 .x { color: #c9ced8; }
+  h1 .arr { color: #22d3ee; text-shadow: 0 0 30px #22d3ee; }
+  h1 .d { color: #22d3ee; text-shadow: 0 0 28px #22d3ee99, 0 6px 30px #000a; }
+  .tag { display: inline-block; font-weight: 900; font-size: 64px; letter-spacing: -0.02em; color: #04131a; background: #fde047; padding: 4px 22px 8px; border-radius: 16px; transform: rotate(-2deg); box-shadow: 0 10px 30px #0008; }
+  .sheet { background: #f3f4f6; border-radius: 12px; overflow: hidden; filter: grayscale(1) brightness(0.8); box-shadow: 0 20px 60px #000c; }
+  .sheet table { border-collapse: collapse; font: 15px Inter, sans-serif; color: #374151; background: #fff; }
+  .sheet td { border: 1px solid #e5e7eb; padding: 4px 10px; white-space: nowrap; }
+  .sheet tr:first-child td { background: #6b7280; color: #fff; font-weight: 700; }
+  .lbl { font-family: Inter, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.16em; padding: 6px 14px; border-radius: 10px; }
+  .dash { width: 1600px; height: 900px; transform-origin: 0 0; }
+  .frame { border-radius: 14px; overflow: hidden; border: 2px solid #22d3ee; box-shadow: 0 0 50px #22d3ee88, 0 20px 60px #000c; }
+  .face { border: 4px dashed #ffffff66; border-radius: 50%; display: grid; place-items: center; font: 800 26px Inter, sans-serif; color: #ffffffaa; text-align: center; background: #ffffff0d; }
+</style>
+</head>
+<body>
+<div id="thumb">
+  <div class="abs" style="left:48px;top:34px">
+    <h1><span class="x">EXCEL</span> <span class="arr">→</span> <span class="d">DASHBOARD</span></h1>
+    <div style="margin-top:16px"><span class="tag">en 5 MIN</span><span style="font: 800 34px Inter, sans-serif; margin-left: 22px; color: #cbd5e1; vertical-align: 12px">con Claude</span></div>
+  </div>
+  <div class="abs" style="left:40px;top:360px;transform:rotate(-4deg)">
+    <div class="lbl" style="background:#374151;color:#e5e7eb;display:inline-block;margin-bottom:10px">ANTES</div>
+    <div class="sheet" style="width:470px;height:270px"><table id="tb"></table></div>
+  </div>
+  <div class="abs" style="left:520px;top:450px;font: 900 110px Inter, sans-serif; color: #22d3ee; text-shadow: 0 0 40px #22d3ee">➜</div>
+  <div class="abs" id="after" style="left:660px;top:318px;transform:rotate(3deg)">
+    <div class="lbl" style="background:#22d3ee;color:#04131a;display:inline-block;margin-bottom:10px">DESPUÉS</div>
+    <div class="frame" id="frame" style="width:590px;height:332px"><div class="dash" id="dash"></div></div>
+  </div>
+  <div class="abs face" id="face" style="right:26px;bottom:40px;width:270px;height:270px;display:none">TU CARA<br>AQUÍ</div>
+</div>
+<script src="data.js"></script>
+<script src="konek-viz.js"></script>
+<script>
+  const f = KONEK_DATA.filas;
+  let h = "<tr><td>Año</td><td>Área</td><td>Categoría</td><td>Importe</td></tr>";
+  for (let i = 0; i < 12; i++) h += `<tr><td>${f[i].anio}</td><td>${f[i].area}</td><td>${f[i].categoria}</td><td style="text-align:right">${f[i].importe.toLocaleString("en-US", { minimumFractionDigits: 2 })}</td></tr>`;
+  document.getElementById("tb").innerHTML = h;
+  const cara = new URLSearchParams(location.search).has("cara");
+  const ancho = cara ? 430 : 590;
+  const el = document.getElementById("dash");
+  if (cara) {
+    document.getElementById("face").style.display = "grid";
+    document.getElementById("after").style.left = "600px";
+    document.getElementById("after").style.top = "350px";
+    document.getElementById("frame").style.width = ancho + "px";
+    document.getElementById("frame").style.height = Math.round(ancho * 0.5625) + "px";
+  }
+  el.style.transform = "scale(" + ancho / 1600 + ")";
+  KonekViz.createDashboard(1, el);
+  window.LISTO = true;
+</script>
+</body>
+</html>

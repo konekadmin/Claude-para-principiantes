@@ -1,0 +1,6 @@
+# Audio intermedio (se regenera con produccion/tts.py y produccion/mezcla.py)
+videos/*/produccion/audio/*.wav
+videos/*/produccion/audio/segmentos/
+node_modules/
+__pycache__/
+.DS_Store
