@@ -611,7 +611,7 @@
     const world = sc.$(".p2-world");
     const R = (q) => () => measure(world, world.querySelector(q));
     const FULL = () => ({ x: -70, y: -40, w: 1740, h: 1024 });
-    const tSend2 = E("q2c") + 0.35, tGen = S("genera2") + 3.3, tCmp = S("q3a") - 0.15, tFull = S("q3b") - 0.1;
+    const tSend2 = E("q2c") + 0.35, tGen = S("genera2") + 3.9, tCmp = S("q3a") - 0.15, tFull = S("q3b") - 0.1;
     const tClick = W("q3c", "filtros") + 0.35, tClick2 = S("q3e") + 0.9;
     const cam = [
       { t: 0, r: FULL },
@@ -641,7 +641,7 @@
         a2.style.display = t >= tSend2 + 0.4 ? "block" : "none";
         body.querySelector(".hist").style.display = sent ? "none" : "block";
         if (sent) pop(u2, t, tSend2, { dy: 30 });
-        body.querySelectorAll(".ln").forEach((ln, i) => pop(ln, t, tSend2 + 0.5 + i * 0.36, { dy: 12, d: 0.3 }));
+        body.querySelectorAll(".ln").forEach((ln, i) => pop(ln, t, tSend2 + 0.4 + i * 0.25, { dy: 12, d: 0.3 }));
       }
       // --- bloques del prompt ---
       if (!wOn) sty(sc.$(".p2-click"), { o: 0 });
@@ -689,7 +689,7 @@
         let filter = null;
         if (t >= tClick) filter = "TI";
         if (t >= tClick2) filter = null;
-        dset(dash, { progress: ramp(t, tGen + 0.2, 1.8), filter, hover: null });
+        dset(dash, { progress: ramp(t, tGen + 0.1, 1.3), filter, hover: null });
         c = camera(t, cam);
         const intro = ramp(t, tGen, 0.6);
         applyCam(world, intro < 1 ? zoomAbout(c, 0.9 + 0.1 * intro) : c);
@@ -841,6 +841,7 @@
         <div style="display:flex;gap:26px"><div class="card b1" style="padding:34px 40px;font-size:32px;font-weight:700;width:560px">Dashboards conectados a tus propios datos</div><div class="card b2" style="padding:34px 40px;font-size:32px;font-weight:700;width:560px">Automatizaciones a medida</div></div>
         <div class="txt b3" style="font-size:32px">Escríbenos desde el mismo link.</div></div>
       <div class="center ct-sub" style="gap:46px">
+        <div class="pill fv" style="font-size:26px"><span class="dot"></span>UN FAVOR RÁPIDO</div>
         <div class="h-l" style="text-align:center;max-width:1500px">Comenta: <span class="grad">¿qué reporte te quita más tiempo?</span></div>
         <div class="txt s2" style="font-size:32px">Con tus respuestas armo los próximos videos.</div>
         <div style="display:flex;align-items:center;gap:26px"><div class="sub-btn sb"></div><div class="bell" style="color:var(--ink);display:none">${icon.bell}</div></div></div>`,
@@ -865,7 +866,7 @@
         });
         ["ventas", "gastos", "cobranzas", "inventario", "archivo de ejemplo"].forEach((w, i) => {
           const it = sc.$(".it" + i);
-          pop(it, t, W("c1b", "plantilla completa") + i * 0.15, { dy: 14 });
+          pop(it, t, S("c1b") + 0.4 + i * 0.15, { dy: 14 });
           const on = env(t, W("c1b", w) - 0.15, W("c1b", w) + 1.6, 0.2, 0.5);
           it.style.borderColor = on > 0.01 ? `rgba(34,211,238,${0.25 + 0.75 * on})` : "var(--line)";
           it.style.boxShadow = on > 0.01 ? `0 0 ${30 * on}px rgba(34,211,238,${0.35 * on})` : "none";
@@ -887,6 +888,7 @@
       const sOn = t > S("c4a") - 0.3;
       sc.$(".ct-sub").style.display = sOn ? "flex" : "none";
       if (sOn) {
+        pop(sc.$(".ct-sub .fv"), t, S("c4a") + 0.05, { ds: 0.1 });
         pop(sc.$(".ct-sub .h-l"), t, W("c4a", "déjame") - 0.1);
         pop(sc.$(".ct-sub .s2"), t, S("c4b"));
         const tc = S("c4b") + 1.3;

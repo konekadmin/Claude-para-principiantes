@@ -33,7 +33,7 @@ Ajustes para que la voz en español suene natural, verificados transcribiendo ca
 
 **Video.** Las escenas son HTML animado (`produccion/escenas/`), sincronizadas con la locución frase por frase. `produccion/render.cjs` las captura cuadro a cuadro con Chromium (Playwright) y las codifica con ffmpeg. La interfaz de chat es una recreación (lo indica en pantalla); los dashboards son los mismos archivos de `material/`, construidos con Claude a partir del Excel ficticio.
 
-**Audio final.** `produccion/mezcla.py` agrega un colchón musical suave, sintetizado en el script (sin derechos de terceros), solo en la cortinilla del logo y en la pantalla final. `produccion/ensamblar.sh` normaliza a -15 LUFS.
+**Audio final.** `produccion/ensamblar.sh` masteriza la voz (filtro de graves, compresión suave, ganancia fija a ~-16 LUFS y limitador) y llama a `produccion/mezcla.py`, que agrega un colchón musical suave sintetizado en el propio script (sin derechos de terceros), 14 dB por debajo de la voz y solo en la cortinilla del logo y en la pantalla final. Resultado medido: -16.7 LUFS integrados, pico -0.8 dBFS (nivel habitual para contenido hablado; YouTube no sube el volumen de videos más bajos de -14 LUFS).
 
 ## Regenerar
 
@@ -44,11 +44,10 @@ cd videos/01-de-excel-a-dashboard-ejecutivo
 python3 produccion/datos.py                    # Excel + data.js
 python3 produccion/construir_dashboards.py     # dashboards de material/
 python3 produccion/tts.py --modelo RUTA/sherpa-onnx-supertonic-3-tts-int8-2026-05-11   # solo si cambias el guion
-python3 produccion/mezcla.py
 python3 produccion/subtitulos.py
 python3 produccion/descripcion.py
 bash produccion/render_video.sh /tmp/render    # ~20 min con 4 núcleos
-bash produccion/ensamblar.sh /tmp/render/video_mudo.mp4
+bash produccion/ensamblar.sh /tmp/render/video_mudo.mp4   # masteriza la voz, mezcla y une con el video
 node produccion/miniatura.cjs
 ```
 

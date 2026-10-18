@@ -1,8 +1,11 @@
 """Mezcla final del audio: locución + colchón musical suave (sintetizado aquí, sin derechos de terceros).
 
-La música solo suena en la cortinilla del logo y en la pantalla final, donde no hay voz.
-Salida: produccion/audio/mezcla.wav (sin normalizar; la normalización a -15 LUFS la hace ensamblar.sh)
+La música solo suena en la cortinilla del logo y en la pantalla final, donde no hay voz, ~14 dB por debajo de ella.
+Uso: python3 produccion/mezcla.py [voz.wav]   (por defecto audio/narracion.flac; ensamblar.sh le pasa la voz ya masterizada)
+Salida: produccion/audio/mezcla.wav
 """
+
+import sys
 
 import json
 from pathlib import Path
@@ -71,8 +74,10 @@ def reverb(x, rng, seg=2.2, mezcla=0.35):
 def main():
     rng = np.random.default_rng(7)
     tl = json.loads((BASE / "timeline.json").read_text(encoding="utf-8"))
-    voz, sr = sf.read(BASE / "audio" / "narracion.flac", dtype="float32")
-    assert sr == SR
+    global SR
+    voz, SR = sf.read(sys.argv[1] if len(sys.argv) > 1 else BASE / "audio" / "narracion.flac", dtype="float32")
+    if voz.ndim > 1:
+        voz = voz.mean(axis=1)
     total = len(voz)
     musica = np.zeros(total + 4 * SR)
 
@@ -99,11 +104,13 @@ def main():
     musica[b:] = 0
 
     musica = reverb(musica, rng)[: total]
-    # el pad queda ~9 dB por debajo del nivel medio de la voz
-    v = voz[np.abs(voz) > 1e-3]
-    rms_voz = np.sqrt(np.mean(v ** 2))
-    m = musica[np.abs(musica) > 1e-4]
-    musica *= rms_voz * 10 ** (-9 / 20) / (np.sqrt(np.mean(m ** 2)) + 1e-9)
+    # el pad queda ~14 dB por debajo de la voz (RMS medido en las frases y en la pantalla final)
+    def rms(x, a, b):
+        return np.sqrt(np.mean(x[int(a * SR): int(b * SR)] ** 2)) + 1e-12
+    frases = [it for it in tl["items"].values() if not it.get("gap")]
+    rms_voz = np.sqrt(np.mean([rms(voz, it["start"], it["end"]) ** 2 for it in frases]))
+    rms_pad = rms(musica, fin["start"] + 1, fin["end"] - 4)
+    musica *= rms_voz * 10 ** (-14 / 20) / rms_pad
     mezcla = voz + musica.astype(np.float32)
     pico = np.max(np.abs(mezcla))
     if pico > 0.98:
