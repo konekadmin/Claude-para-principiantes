@@ -8,7 +8,9 @@ Video para **Konek | Finanzas & IA**, producido a partir de [`guion.md`](guion.m
 | --- | --- |
 | `publicacion/` | Lo que se sube a YouTube: `video.mp4` (1080p, 30 fps), `miniatura.png`, `miniatura-con-espacio-para-cara.png`, `subtitulos.es.srt`, `descripcion.txt` y `youtube.md` (título, alternativas A/B, etiquetas, comentario fijado, configuración y pantalla final) |
 | `material/` | Lo que se usa en el video y se comparte con la comunidad: el Excel ficticio, los dos dashboards interactivos (HTML) y `prompts.md` con los dos prompts más las plantillas para ventas, gastos, cobranzas e inventario |
-| `produccion/` | Las fuentes para regenerar todo: datos, locución, escenas animadas, mezcla y render |
+| `produccion/` | Las fuentes para regenerar todo: datos, guion de locución, escenas animadas, mezcla, render y `armar_video.sh` (arma el video de punta a punta) |
+
+La voz (Supertonic 3, M1) y el logo son del canal y están en [`voz/`](../../voz/) y [`marca/`](../../marca/), en la raíz del proyecto.
 
 ## Checklist para publicar
 
@@ -22,7 +24,7 @@ Video para **Konek | Finanzas & IA**, producido a partir de [`guion.md`](guion.m
 
 ## Cómo está hecho
 
-**Locución.** `produccion/narracion.json` tiene el guion partido frase por frase. `produccion/tts.py` sintetiza cada frase con Supertonic 3 (voz M1, 12 pasos, velocidad 0.92) y arma la locución y la línea de tiempo. El modelo usado es la versión oficial de Supertonic 3 cuantizada a INT8 que publica sherpa-onnx (`sherpa-onnx-supertonic-3-tts-int8-2026-05-11`), porque el entorno de producción no tenía acceso a Hugging Face. Con `--backend supertonic` el mismo script usa el paquete oficial `pip install supertonic` (modelo completo); esa ruta no se probó aquí.
+**Locución.** `produccion/narracion.json` tiene el guion partido frase por frase. `produccion/tts.py` sintetiza cada frase con la voz del canal (`voz/supertonic_m1.py`: Supertonic 3, voz M1, 12 pasos, velocidad 0.92) y arma la locución y la línea de tiempo. El modelo usado es la versión oficial de Supertonic 3 cuantizada a INT8 que publica sherpa-onnx (`sherpa-onnx-supertonic-3-tts-int8-2026-05-11`), porque el entorno de producción no tenía acceso a Hugging Face. Con `--backend supertonic` el mismo script usa el paquete oficial `pip install supertonic` (modelo completo); esa ruta no se probó aquí.
 
 Ajustes para que la voz en español suene natural, verificados transcribiendo cada frase con Whisper:
 
@@ -37,19 +39,14 @@ Ajustes para que la voz en español suene natural, verificados transcribiendo ca
 
 ## Regenerar
 
-Requisitos: Python 3 con `numpy soundfile openpyxl sherpa-onnx`, Node con `playwright` y ffmpeg.
+Requisitos: Python 3.10+ (`pip install -r produccion/requirements.txt`), Node 18+ con npm y ffmpeg.
 
 ```bash
-cd videos/01-de-excel-a-dashboard-ejecutivo
-python3 produccion/datos.py                    # Excel + data.js
-python3 produccion/construir_dashboards.py     # dashboards de material/
-python3 produccion/tts.py --modelo RUTA/sherpa-onnx-supertonic-3-tts-int8-2026-05-11   # solo si cambias el guion
-python3 produccion/subtitulos.py
-python3 produccion/descripcion.py
-bash produccion/render_video.sh /tmp/render    # ~20 min con 4 núcleos
-bash produccion/ensamblar.sh /tmp/render/video_mudo.mp4   # masteriza la voz, mezcla y une con el video
-node produccion/miniatura.cjs
+bash produccion/armar_video.sh          # todo, usando la locución ya generada (~20 min con 4 núcleos)
+bash produccion/armar_video.sh --voz    # además regenera la locución con Supertonic 3 (M1)
 ```
+
+El script corre, en orden: `datos.py` (Excel y datos), `construir_dashboards.py`, `tts.py` (solo con `--voz`), `subtitulos.py`, `descripcion.py`, `render_video.sh` (escenas cuadro a cuadro en 4 tramos), `ensamblar.sh` (voz masterizada + música + video) y `miniatura.cjs`. La primera vez instala Playwright con Chromium (`npm install` en `produccion/`) y, con `--voz`, descarga el modelo de voz (`voz/instalar_voz.sh`).
 
 La locución ya generada está en `produccion/audio/narracion.flac` y sus tiempos en `produccion/timeline.json`: si no cambias el guion, no hace falta volver a sintetizarla. Como Supertonic genera cada toma con algo de variación, regenerar dará una locución parecida pero no idéntica.
 

@@ -1,0 +1,7 @@
+# Python 3.10+
+numpy
+soundfile
+openpyxl
+sherpa-onnx      # voz Supertonic 3 (M1) con el modelo INT8 de voz/instalar_voz.sh
+fonttools        # solo para regenerar el logo (marca/generar_marca.py)
+# supertonic     # opcional: paquete oficial (modelo completo desde Hugging Face)

@@ -1,0 +1,11 @@
+{
+  "name": "konek-video-01-excel-a-dashboard",
+  "private": true,
+  "description": "Render de escenas, miniatura y logo del video De Excel a dashboard ejecutivo con Claude",
+  "scripts": {
+    "postinstall": "playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "1.56.1"
+  }
+}

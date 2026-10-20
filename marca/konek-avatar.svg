@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+<defs><radialGradient id="bgav" cx="0.7" cy="0.2" r="0.9"><stop offset="0" stop-color="#12304a"/><stop offset="1" stop-color="#070b14"/></radialGradient></defs>
+<rect width="800" height="800" fill="url(#bgav)"/>
+<g transform="translate(160 160) scale(4.0)">
+  <defs><linearGradient id="gav" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs>
+  <g stroke="url(#gav)" stroke-width="10" stroke-linecap="round" fill="none"><path d="M34 18 V102"/><path d="M34 62 L90 22"/><path d="M52 50 L90 98"/></g>
+  <g fill="url(#gav)"><circle cx="34" cy="18" r="10"/><circle cx="34" cy="102" r="10"/><circle cx="90" cy="22" r="10"/><circle cx="90" cy="98" r="10"/><circle cx="34" cy="62" r="8"/></g>
+</g>
+</svg>

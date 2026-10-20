@@ -1,0 +1,10 @@
+{
+  "motor": "Supertonic 3",
+  "voz": "M1",
+  "descripcion": "Voz masculina M1 de Supertonic 3, configurada para narración en español",
+  "idioma": "es",
+  "pasos": 12,
+  "velocidad": 0.92,
+  "modelo": "modelo/sherpa-onnx-supertonic-3-tts-int8-2026-05-11",
+  "estilo": "M1.json"
+}
