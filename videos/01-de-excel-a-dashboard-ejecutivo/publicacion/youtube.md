@@ -1,6 +1,6 @@
 # Publicación en YouTube — De Excel a dashboard ejecutivo con Claude
 
-Canal: **Konek | Finanzas & IA** · Duración: **7:02** · Voz: Supertonic 3, M1 (masculina)
+Canal: **Konek | Finanzas & IA** · Duración: **7:03** · Voz: Supertonic 3, M1 (masculina)
 
 > Antes de publicar, pon el link real de la comunidad en Skool en `produccion/enlaces.json` y vuelve a correr `python3 produccion/descripcion.py` (actualiza la descripción y el comentario fijado).
 
@@ -17,7 +17,7 @@ Alternativas para la prueba A/B de títulos (Probar y comparar):
 ## Miniatura
 
 - `miniatura.png` — lista para subir (1280×720).
-- `miniatura-espacio-cara.png` — misma composición con el lado derecho libre para tu cara con expresión de sorpresa (como pedía el guion). `guia-cara.png` es una guía transparente del lugar sugerido para superponerla en tu editor. Guarda tu versión con otro nombre: `armar_video.sh` regenera las miniaturas. Se editan desde `produccion/escenas/miniatura.html`.
+- `miniatura-espacio-cara.png` — misma composición con espacio libre abajo a la derecha para tu cara con expresión de sorpresa (como pedía el guion). `guia-cara.png` es una guía transparente del lugar sugerido para superponerla en tu editor. Guarda tu versión con otro nombre: `armar_video.sh` regenera las miniaturas. Se editan desde `produccion/escenas/miniatura.html`.
 
 ## Descripción
 
@@ -57,11 +57,11 @@ Plantilla completa del prompt de 5 partes + Excel de práctica: [LINK_COMUNIDAD]
 | Audiencia | No, no es contenido creado para niños |
 | Capítulos automáticos | Desactivados: ya van en la descripción |
 | Lista de reproducción | Claude para finanzas (o la serie de dashboards) |
-| Contenido alterado o sintético | La narración usa voz sintética, pero no imita a una persona real ni muestra hechos realistas falsos. Revisa la política vigente de YouTube al subir; la descripción ya lo aclara. |
+| Contenido alterado o sintético | Voz sintética que no imita a ninguna persona real. La interfaz de chat es una recreación rotulada en pantalla y los dashboards se programaron para el ejemplo; la descripción lo aclara. Revisa la política vigente de YouTube para decidir si marcar la casilla. |
 
-## Pantalla final (6:42 – 7:02)
+## Pantalla final (6:43 – 7:03)
 
-Los últimos 20 segundos dejan marcos vacíos para los elementos de YouTube:
+Los últimos 20 segundos (la pantalla aparece un poco antes, a las 6:42) dejan marcos vacíos para los elementos de YouTube:
 
 1. **Video** (arriba al centro; la locución dice «el video está aquí arriba» al comenzar la pantalla final): el siguiente video, *Tu reporte mensual se hace solo*. Mientras no exista, usa «Mejor para el espectador» o una lista de reproducción.
 2. **Suscribirse** (círculo abajo a la izquierda).

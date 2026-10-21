@@ -25,7 +25,7 @@ OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que el 
 
 ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas, lógica y las métricas más importantes. Valida que los totales cuadren.
 
-PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
+PROPUESTA: Proponme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
 
 ✅ Antes de presentar
 • Revisa que los totales cuadren con tu Excel.
