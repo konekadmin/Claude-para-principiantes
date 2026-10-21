@@ -817,33 +817,33 @@
   "pantalla_final": {
    "sec": "cierre",
    "start": 402.45,
-   "end": 403.05,
+   "end": 403.65,
    "gap": true
   },
   "e3a": {
    "sec": "cierre",
-   "start": 403.05,
-   "end": 404.44,
+   "start": 403.65,
+   "end": 405.04,
    "text": "El video está aquí arriba.",
    "tts": "El video está aquí arriba.",
    "clave": "e81d4e29c90e",
-   "m0": 17774505,
-   "m1": 17835804
+   "m0": 17800965,
+   "m1": 17862264
   },
   "e3b": {
    "sec": "cierre",
-   "start": 404.69,
-   "end": 405.56,
+   "start": 405.29,
+   "end": 406.16,
    "text": "Nos vemos ahí.",
    "tts": "Nos vemos ahí.",
    "clave": "156328e53fff",
-   "m0": 17846829,
-   "m1": 17885196
+   "m0": 17873289,
+   "m1": 17911656
   },
   "endscreen": {
    "sec": "cierre",
-   "start": 405.96,
-   "end": 422.45,
+   "start": 406.56,
+   "end": 423.25,
    "gap": true
   }
  },
@@ -936,5 +936,5 @@
   "e3b",
   "endscreen"
  ],
- "duracion": 422.45
+ "duracion": 423.25
 }

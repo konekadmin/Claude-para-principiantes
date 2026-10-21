@@ -2,13 +2,13 @@
 
 Video para **Konek | Finanzas & IA**, producido a partir de [`guion.md`](guion.md). La locución está hecha con **Supertonic 3, voz M1 (masculina)**.
 
-> `guion.md` es el guion original, tal como llegó. La duración y los capítulos reales del video (7:02, 8 capítulos) están en `publicacion/youtube.md`, y el texto locutado exacto, en `produccion/narracion.json`.
+> `guion.md` es el guion original, tal como llegó. La duración y los capítulos reales del video (7:03, 8 capítulos) están en `publicacion/youtube.md`, y el texto locutado exacto, en `produccion/narracion.json`.
 
 ## Qué hay en cada carpeta
 
 | Carpeta | Contenido |
 | --- | --- |
-| `publicacion/` | Lo que se sube a YouTube: `video.mp4` (1080p, 30 fps), `miniatura.png`, `miniatura-espacio-cara.png` + `guia-cara.png`, `subtitulos.es.srt`, `descripcion.txt` y `youtube.md` (título, alternativas A/B, etiquetas, comentario fijado, configuración y pantalla final). Todo esto lo regenera `armar_video.sh`: no lo edites en el lugar |
+| `publicacion/` | Lo que se sube a YouTube: `video.mp4` (1080p, 30 fps), `miniatura.png`, `miniatura-espacio-cara.png` + `guia-cara.png`, `subtitulos.es.srt`, `descripcion.txt` y `youtube.md` (título, alternativas A/B, etiquetas, comentario fijado, configuración y pantalla final). Todo esto lo regenera `armar_video.sh`: no lo edites directamente, porque se sobrescribe al volver a armar el video |
 | `material/` | Lo que se usa en el video y se comparte con la comunidad: el Excel ficticio, los dos dashboards interactivos (HTML) y `prompts.md` con los dos prompts más las plantillas para ventas, gastos, cobranzas e inventario |
 | `produccion/` | Los archivos fuente para regenerar todo: datos, guion de locución (`narracion.json`), escenas animadas (`escenas/`, con sus fuentes tipográficas), mezcla, render, enlaces (`enlaces.json`) y `armar_video.sh`, que arma el video de punta a punta |
 
@@ -34,7 +34,7 @@ Ajustes para que la voz en español suene natural, verificados transcribiendo ca
 - «IA» se dice «inteligencia artificial» (la sigla sonaba ininteligible).
 - «Nada especial» pasó a «Nada del otro mundo» y «cada KPI» a «cada uno de los KPIs» (la voz los pronunciaba mal).
 - Se agregaron frases cortas de apoyo: el narrador nombra las cinco partes del prompt mientras aparecen («Rol. Datos. Objetivo. Análisis. Propuesta.») y numera las ideas clave («Uno», «Dos», «Tres»).
-- «El video está aquí arriba. Nos vemos ahí.» suena ya dentro de la pantalla final (los últimos 20 s), cuando YouTube muestra los elementos.
+- «El video está aquí arriba. Nos vemos ahí.» suena ya dentro de los últimos 20 s, cuando YouTube muestra los elementos de la pantalla final (que aparece 0.8 s antes, para que ya esté completa).
 
 **Video.** Las escenas son HTML animado (`produccion/escenas/`), sincronizadas con la locución frase por frase. `produccion/render.cjs` las captura cuadro a cuadro con Chromium (Playwright) y las codifica con ffmpeg (H.264, BT.709). Las fuentes Inter e Inter Display vienen en `produccion/escenas/fuentes/` (licencia OFL), así el render sale igual en cualquier máquina. La interfaz de chat es una recreación (lo indica en pantalla). Los dashboards los programó Claude para este ejemplo siguiendo lo que piden los prompts, y son los mismos que están en `material/`.
 
@@ -44,15 +44,16 @@ Ajustes para que la voz en español suene natural, verificados transcribiendo ca
 
 ## Regenerar
 
-Requisitos: Python 3.10+ con los paquetes de `produccion/requirements.txt` (mejor en un entorno virtual: `python3 -m venv .venv && source .venv/bin/activate && python3 -m pip install -r produccion/requirements.txt`), Node 18+ con npm y ffmpeg.
+Requisitos: Python 3.10+ con los paquetes de `produccion/requirements.txt` (mejor en un entorno virtual: `python3 -m venv .venv && source .venv/bin/activate && python3 -m pip install -r produccion/requirements.txt`), Node 18+ con npm y ffmpeg, en macOS o Linux (en Windows, dentro de WSL2).
 
 ```bash
-bash produccion/armar_video.sh          # todo, usando la locución ya generada (~20 min con 4 núcleos)
-bash produccion/armar_video.sh --voz    # además regenera la locución con Supertonic 3 (M1)
+bash produccion/armar_video.sh            # todo, usando la locución ya generada (~20 min con 4 núcleos)
+bash produccion/armar_video.sh --voz      # si cambiaste narracion.json: sintetiza solo las frases nuevas o cambiadas
+bash produccion/armar_video.sh --voz-todo # toma nueva de toda la locución con Supertonic 3 (M1)
 ```
 
-El script corre, en orden: `datos.py` (Excel y datos), `construir_dashboards.py`, `tts.py` (solo con `--voz`), `subtitulos.py`, `descripcion.py` (con el link de `enlaces.json`), `render_video.sh` (escenas cuadro a cuadro en 4 tramos), `ensamblar.sh` (voz masterizada + música + video), `miniatura.cjs` y `cortinilla.sh`. La primera vez instala Playwright con Chromium (`npm install` en `produccion/`) y, con `--voz`, descarga el modelo de voz (`voz/instalar_voz.sh`).
+El script corre, en orden: `datos.py` (Excel y datos), `construir_dashboards.py`, `tts.py` (solo con `--voz` o `--voz-todo`), `subtitulos.py`, `descripcion.py` (con el link de `enlaces.json`), `render_video.sh` (escenas cuadro a cuadro en 4 tramos), `ensamblar.sh` (voz masterizada + música + video), `miniatura.cjs` y `cortinilla.sh`. La primera vez instala Playwright con Chromium (`npm install` en `produccion/`) y, si hay que sintetizar voz, descarga el modelo (`voz/instalar_voz.sh`).
 
-La locución ya generada está en `produccion/audio/narracion.flac` y sus tiempos en `produccion/timeline.json`: si no cambias el guion, no hace falta volver a sintetizarla. Como Supertonic genera cada toma con algo de variación, regenerar dará una locución parecida pero no idéntica.
+La locución ya generada está en `produccion/audio/narracion.flac` y sus tiempos en `produccion/timeline.json`: si no cambias el guion, no hace falta volver a sintetizarla. Para rehacer una sola frase: `python3 produccion/tts.py --rehacer ID` (los ID están en `narracion.json`). Como Supertonic genera cada toma con algo de variación, una toma nueva suena parecida, pero no idéntica.
 
 Para previsualizar las escenas en el navegador: abre `produccion/escenas/video.html` (reproduce en tiempo real, sin audio) o `video.html?t=150` para ver un instante concreto.

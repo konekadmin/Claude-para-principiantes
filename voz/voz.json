@@ -5,6 +5,5 @@
   "idioma": "es",
   "pasos": 12,
   "velocidad": 0.92,
-  "modelo": "modelo/sherpa-onnx-supertonic-3-tts-int8-2026-05-11",
-  "estilo": "M1.json"
+  "modelo": "modelo/sherpa-onnx-supertonic-3-tts-int8-2026-05-11"
 }

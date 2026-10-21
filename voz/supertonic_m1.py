@@ -9,6 +9,7 @@ Lo comparten los videos (produccion/tts.py) y probar_voz.py:
 
 import json
 import re
+import subprocess
 from pathlib import Path
 
 import numpy as np
@@ -45,6 +46,11 @@ def texto_tts(texto):
     return re.sub(r"\s+", " ", texto).strip()
 
 
+def modelo_completo(d):
+    """Los 7 archivos existen, no están vacíos y la instalación terminó (marca que deja instalar_voz.sh)."""
+    return (d / ".instalado").is_file() and all((d / f).is_file() and (d / f).stat().st_size > 0 for f in ARCHIVOS_MODELO)
+
+
 class SherpaBackend:
     """Supertonic 3 INT8 publicado por sherpa-onnx (instalar con voz/instalar_voz.sh)."""
 
@@ -52,9 +58,11 @@ class SherpaBackend:
         import sherpa_onnx
 
         d = Path(modelo or MODELO_POR_DEFECTO)
-        faltan = [f for f in ARCHIVOS_MODELO if not (d / f).is_file()]
-        if faltan:
-            raise SystemExit(f"Falta el modelo en {d} ({', '.join(faltan)}). Ejecuta: bash voz/instalar_voz.sh")
+        if not modelo_completo(d):
+            if d.resolve() != MODELO_POR_DEFECTO.resolve():
+                raise SystemExit(f"Falta el modelo o está incompleto en {d}. Ejecuta: bash voz/instalar_voz.sh")
+            print("Instalando el modelo de voz (una sola vez)…")
+            subprocess.run(["bash", str(DIR / "instalar_voz.sh")], check=True)
         cfg = sherpa_onnx.OfflineTtsConfig(
             model=sherpa_onnx.OfflineTtsModelConfig(
                 supertonic=sherpa_onnx.OfflineTtsSupertonicModelConfig(
@@ -71,7 +79,10 @@ class SherpaBackend:
             )
         )
         self.sherpa = sherpa_onnx
-        self.tts = sherpa_onnx.OfflineTts(cfg)
+        try:
+            self.tts = sherpa_onnx.OfflineTts(cfg)
+        except RuntimeError as e:
+            raise SystemExit(f"El modelo en {d} está dañado ({e}). Bórralo y ejecuta: bash voz/instalar_voz.sh")
         self.sid, self.pasos, self.velocidad, self.idioma = VOCES.index(voz), pasos, velocidad, idioma
 
     def __call__(self, texto):

@@ -30,7 +30,7 @@ OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que el 
 
 ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas, lógica y las métricas más importantes. Valida que los totales cuadren.
 
-PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo."""
+PROPUESTA: Proponme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo."""
 CAPITULOS = [  # (id de la línea donde arranca la escena, margen, nombre)
     (None, 0, "De Excel a dashboard"),
     ("p1a", 0.3, "Por qué tus reportes no funcionan"),
@@ -61,10 +61,12 @@ def mmss(t):
 
 def main():
     tl = json.loads((BASE / "timeline.json").read_text(encoding="utf-8"))
-    link = json.loads((BASE / "enlaces.json").read_text(encoding="utf-8"))["comunidad"]
+    link = json.loads((BASE / "enlaces.json").read_text(encoding="utf-8"))["comunidad"].strip()
+    if not link or link.startswith("["):
+        print("AVISO: falta el link de la comunidad. Ponlo en produccion/enlaces.json y vuelve a correr este script.")
     caps = [(0 if k is None else tl["items"][k]["start"] - m, n) for k, m, n in CAPITULOS]
     capitulos = "\n".join(f"{mmss(t)} {n}" for t, n in caps)
-    fin = {"start": tl["items"]["pantalla_final"]["start"], "end": tl["items"]["endscreen"]["end"]}
+    fin = {"start": tl["duracion"] - 20, "end": tl["duracion"]}  # YouTube admite como máximo los últimos 20 s
 
     desc = f"""De un Excel exportado del ERP a un dashboard ejecutivo en minutos, con Claude. Pero lo importante no es el dashboard: es el prompt de 2 pasos que hace que Claude piense como un analista antes de diseñar. Funciona con gastos, ventas, cobranzas, inventario… con lo que tengas.
 
@@ -121,7 +123,7 @@ Alternativas para la prueba A/B de títulos (Probar y comparar):
 ## Miniatura
 
 - `miniatura.png` — lista para subir (1280×720).
-- `miniatura-espacio-cara.png` — misma composición con el lado derecho libre para tu cara con expresión de sorpresa (como pedía el guion). `guia-cara.png` es una guía transparente del lugar sugerido para superponerla en tu editor. Guarda tu versión con otro nombre: `armar_video.sh` regenera las miniaturas. Se editan desde `produccion/escenas/miniatura.html`.
+- `miniatura-espacio-cara.png` — misma composición con espacio libre abajo a la derecha para tu cara con expresión de sorpresa (como pedía el guion). `guia-cara.png` es una guía transparente del lugar sugerido para superponerla en tu editor. Guarda tu versión con otro nombre: `armar_video.sh` regenera las miniaturas. Se editan desde `produccion/escenas/miniatura.html`.
 
 ## Descripción
 
@@ -154,11 +156,11 @@ Plantilla completa del prompt de 5 partes + Excel de práctica: {link}
 | Audiencia | No, no es contenido creado para niños |
 | Capítulos automáticos | Desactivados: ya van en la descripción |
 | Lista de reproducción | Claude para finanzas (o la serie de dashboards) |
-| Contenido alterado o sintético | La narración usa voz sintética, pero no imita a una persona real ni muestra hechos realistas falsos. Revisa la política vigente de YouTube al subir; la descripción ya lo aclara. |
+| Contenido alterado o sintético | Voz sintética que no imita a ninguna persona real. La interfaz de chat es una recreación rotulada en pantalla y los dashboards se programaron para el ejemplo; la descripción lo aclara. Revisa la política vigente de YouTube para decidir si marcar la casilla. |
 
 ## Pantalla final ({mmss(fin['start'])} – {mmss(fin['end'])})
 
-Los últimos 20 segundos dejan marcos vacíos para los elementos de YouTube:
+Los últimos 20 segundos (la pantalla aparece un poco antes, a las {mmss(tl['items']['pantalla_final']['start'])}) dejan marcos vacíos para los elementos de YouTube:
 
 1. **Video** (arriba al centro; la locución dice «el video está aquí arriba» al comenzar la pantalla final): el siguiente video, *Tu reporte mensual se hace solo*. Mientras no exista, usa «Mejor para el espectador» o una lista de reproducción.
 2. **Suscribirse** (círculo abajo a la izquierda).

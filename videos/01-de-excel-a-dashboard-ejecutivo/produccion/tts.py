@@ -42,9 +42,12 @@ def main():
     ap.add_argument("--backend", choices=["sherpa", "supertonic"], default="sherpa")
     ap.add_argument("--modelo", help="carpeta del modelo sherpa-onnx-supertonic-3-tts-int8-* (por defecto voz/modelo/...)")
     ap.add_argument("--rehacer", nargs="*", default=[], help="ids de frases a regenerar aunque estén en caché")
+    ap.add_argument("--todo", action="store_true", help="vuelve a sintetizar todas las frases (toma nueva)")
     args = ap.parse_args()
 
     plan = json.loads((BASE / "narracion.json").read_text(encoding="utf-8"))
+    if args.todo:
+        args.rehacer = [it["id"] for it in plan["items"] if "text" in it]
     voz, pasos, vel, idioma = (plan.get(k, CONFIG[k]) for k in ("voz", "pasos", "velocidad", "idioma"))
     # toma previa (para reconstruir la caché sin volver a sintetizar)
     previo, audio_previo = {}, None
@@ -84,8 +87,8 @@ def main():
                 x = audio_previo[pv["m0"]:pv["m1"]].copy()
                 sf.write(f, x, SR)
             else:
-                x = recortar_silencio(sintetizar(tt))
-                sf.write(f, x, SR)
+                sf.write(f, recortar_silencio(sintetizar(tt)), SR)
+                x, _ = sf.read(f, dtype="float32")
                 print(f"  sintetizado {it['id']}: {len(x) / SR:.2f}s  «{tt}»")
             dur = len(x) / SR
             pausa = it.get("pause", 0.3)

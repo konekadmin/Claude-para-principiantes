@@ -47,6 +47,8 @@
     sty(el, { o: Math.min(p, q), y: (1 - p) * dy, s: 1 - (1 - p) * ds });
   };
   const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  // la X de las marcas «no» va dibujada (el glifo ✕ no está en Inter y cambiaría según la máquina)
+  const X = `<svg viewBox="0 0 24 24" width="0.8em" height="0.8em" style="display:block"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>`;
 
   // ---------- capas globales ----------
   const bg = mk(`<div class="layer bgfx"><div class="blob b1"></div><div class="blob b2"></div><div class="grid"></div></div>`);
@@ -166,9 +168,9 @@
       <div class="abs hk-wipe" style="left:0;top:0;width:6px;height:1080px;background:#22d3ee;box-shadow:0 0 40px 12px #22d3ee99"></div>
       <div class="abs hk-dim" style="inset:0;background:#050912"></div>
       <div class="abs hk-nos" style="left:140px;top:300px;display:flex;flex-direction:column;gap:26px">
-        <div class="chip n1"><span class="xmark">✕</span>Sin Power BI</div>
-        <div class="chip n2"><span class="xmark">✕</span>Sin programar una línea</div>
-        <div class="chip n3"><span class="xmark">✕</span>Sin PowerPoint a las 11 p.m.</div>
+        <div class="chip n1"><span class="xmark">${X}</span>Sin Power BI</div>
+        <div class="chip n2"><span class="xmark">${X}</span>Sin programar una línea</div>
+        <div class="chip n3"><span class="xmark">${X}</span>Sin PowerPoint a las 11 p.m.</div>
       </div>
       <div class="center hk-t1"><div class="h-l">No es el dashboard.</div></div>
       <div class="center hk-t2" style="gap:44px">
@@ -182,7 +184,7 @@
         </div>
       </div>
       <div class="center hk-t4" style="flex-direction:row;gap:40px">
-        <div class="card v1" style="padding:44px 48px;width:620px;text-align:center"><span class="xmark" style="width:64px;height:64px;font-size:36px">✕</span><div class="h-m" style="margin-top:22px;color:var(--ink-2)">Un gráfico bonito</div></div>
+        <div class="card v1" style="padding:44px 48px;width:620px;text-align:center"><span class="xmark" style="width:64px;height:64px;font-size:36px">${X}</span><div class="h-m" style="margin-top:22px;color:var(--ink-2)">Un gráfico bonito</div></div>
         <div class="card v2" style="padding:44px 48px;width:720px;text-align:center;border-color:#22d3ee88;box-shadow:0 0 60px #22d3ee33"><span class="vmark" style="width:64px;height:64px;font-size:36px">✓</span><div class="h-m" style="margin-top:22px">Una herramienta que tu gerente <span class="grad">realmente usa</span></div></div>
       </div>`,
       render);
@@ -310,7 +312,7 @@
           <div class="pb-bars" style="background:#fff;border:1px solid #ddd;padding:12px 16px;flex:1"><div style="font-size:18px">Importe por fila</div><svg width="600" height="270" style="margin-top:30px">${bars}<line x1="0" x2="600" y1="250" y2="250" stroke="#999"/></svg></div>
         </div></div>`;
     })();
-    const ann = (cls, txt, css) => `<div class="abs ${cls}" style="${css};display:flex;align-items:center;gap:12px;background:#2a0d12;border:2px solid #ff6b6b;color:#ffd0d0;font-size:28px;font-weight:700;padding:12px 20px;border-radius:14px;box-shadow:0 10px 40px #000a"><span class="xmark">✕</span>${txt}</div>`;
+    const ann = (cls, txt, css) => `<div class="abs ${cls}" style="${css};display:flex;align-items:center;gap:12px;background:#2a0d12;border:2px solid #ff6b6b;color:#ffd0d0;font-size:28px;font-weight:700;padding:12px 20px;border-radius:14px;box-shadow:0 10px 40px #000a"><span class="xmark">${X}</span>${txt}</div>`;
     const sc = scene("problema", a, b, `
       <div class="abs pb-clock card" style="right:80px;top:70px;padding:18px 28px;display:flex;align-items:center;gap:20px">
         <div style="font-size:20px;color:var(--muted);font-weight:600;letter-spacing:.08em">CIERRE DE MES</div><div class="clk" style="font-size:54px;font-weight:800;font-variant-numeric:tabular-nums">18:00</div></div>
@@ -384,12 +386,13 @@
       const sh = sc.$(".dt-sheet");
       const pz = ramp(t, a, 0.45);
       sty(sh, { o: pz, y: (1 - pz) * 30, s: 1 + 0.025 * clamp01((t - a) / 26) });
-      if (!cols) {
+      if (!cols && document.fonts.status === "loaded") {
         const th = (c) => measure(sh, sh.querySelector(`th[data-col="${c}"]`));
         const grid = measure(sh, sh.querySelector(".s-grid"));
         cols = { D: th("D"), E: th("E"), A: th("A"), top: grid.y, h: grid.h };
       }
       const hac = sc.$(".h-ac"), hyr = sc.$(".h-yr");
+      if (!cols) return;
       Object.assign(hac.style, { left: cols.D.x + "px", top: cols.top + "px", width: cols.E.x + cols.E.w - cols.D.x + "px", height: cols.h - 4 + "px" });
       Object.assign(hyr.style, { left: cols.A.x + "px", top: cols.top + "px", width: cols.A.w + "px", height: cols.h - 4 + "px" });
       sty(hac, { o: env(t, W("d1b", "por área") - 0.2, S("d1d"), 0.3, 0.3) });
@@ -561,7 +564,7 @@
     ["DATOS", "--t-datos", "El Excel adjunto contiene los gastos de la empresa por área y categoría, comparando septiembre 2026 con septiembre 2025.", "q1e"],
     ["OBJETIVO", "--t-obj", "Quiero un dashboard simple, limpio, profesional e interactivo, que el gerente general y el CFO entiendan en menos de un minuto.", "q1f"],
     ["ANÁLISIS", "--t-ana", "Antes de crear nada, analiza el archivo. Entiende su estructura, columnas, lógica y las métricas más importantes. Valida que los totales cuadren.", "q1g"],
-    ["PROPUESTA", "--t-pro", "Propónme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.", "q1h"],
+    ["PROPUESTA", "--t-pro", "Proponme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.", "q1h"],
   ];
   {
     const a = S("q1a") - 0.3, b = S("i0") - 0.1;
@@ -980,7 +983,7 @@
       <div class="abs es-t" style="left:0;right:0;top:80px;text-align:center;font-size:24px;letter-spacing:.2em;color:var(--muted);font-weight:700">SIGUIENTE VIDEO <span class="es-flecha cyan" style="display:inline-block">↓</span></div>
       <div class="endslot es-v" style="left:536px;top:130px;width:848px;height:477px;flex-direction:column;gap:10px">Siguiente video</div>
       <div class="abs es-sub" style="left:536px;top:690px;width:250px;text-align:center"><div class="endslot" style="position:relative;width:250px;height:250px;border-radius:50%">Suscríbete</div></div>
-      <div class="endslot es-l" style="left:836px;top:690px;width:548px;height:250px">Otro video recomendado</div>
+      <div class="endslot es-l" style="left:940px;top:690px;width:444px;height:250px">Otro video recomendado</div>
       <div class="abs es-c" style="left:0;right:0;bottom:40px;text-align:center;font-size:26px;color:var(--ink-2)">Plantillas y comunidad: <span class="cyan">link en la descripción</span></div>`,
       render, { fi: 0.5, fo: 0.01 });
     function render(t) {

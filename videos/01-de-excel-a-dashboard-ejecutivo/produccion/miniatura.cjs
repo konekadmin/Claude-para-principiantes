@@ -12,7 +12,8 @@ const { pathToFileURL } = require("url");
   for (const [q, out, transparente] of [["", "miniatura.png", false], ["?cara=1", "miniatura-espacio-cara.png", false], ["?guia=1", "guia-cara.png", true]]) {
     await p.goto(url + q);
     await p.waitForFunction(() => window.LISTO === true);
-    await p.evaluate(() => document.fonts.ready);
+  // las @font-face se cargan recién cuando se usan: se fuerzan todas antes de capturar el primer cuadro
+  await p.evaluate(() => Promise.all([...document.fonts].map((f) => f.load())).then(() => document.fonts.ready));
     await p.locator("#thumb").screenshot({ path: path.join(__dirname, "..", "publicacion", out), omitBackground: transparente });
     console.log("ok", out);
   }

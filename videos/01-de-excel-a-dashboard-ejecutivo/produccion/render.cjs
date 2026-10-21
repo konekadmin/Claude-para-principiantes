@@ -22,7 +22,8 @@ const fps = +(args.fps || 30);
   await page.goto(pathToFileURL(path.join(__dirname, "escenas", "video.html")).href + "?captura=1");
   await page.waitForFunction(() => window.VIDEO_READY === true);
   if (args.solo) await page.evaluate((s) => (window.SOLO = s), String(args.solo));
-  await page.evaluate(() => document.fonts.ready);
+  // las @font-face se cargan recién cuando se usan: se fuerzan todas antes de capturar el primer cuadro
+  await page.evaluate(() => Promise.all([...document.fonts].map((f) => f.load())).then(() => document.fonts.ready));
   const dur = await page.evaluate(() => window.VIDEO_DURATION);
 
   if (args.png) {

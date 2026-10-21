@@ -18,6 +18,12 @@
   (function () {
     const q = new URLSearchParams(location.search);
     if (q.get("captura")) return;
+    // en vista previa, el lienzo de 1920x1080 se escala para entrar en la ventana
+    const st = document.getElementById("stage");
+    const ajustar = () => { st.style.transformOrigin = "0 0"; st.style.transform = `scale(${Math.min(innerWidth / 1920, innerHeight / 1080)})`; };
+    addEventListener("resize", ajustar);
+    ajustar();
+    document.body.style.overflow = "hidden";
     if (q.has("t")) { renderFrame(parseFloat(q.get("t"))); return; }
     const t0 = performance.now();
     (function loop(now) { renderFrame(((now - t0) / 1000) % VIDEO_DURATION); requestAnimationFrame(loop); })(t0);

@@ -4,10 +4,10 @@ La locución de los videos de Konek usa **Supertonic 3**, voz **M1** (masculina)
 
 | Archivo | Para qué |
 | --- | --- |
-| `voz.json` | Configuración del canal: voz M1, idioma `es`, 12 pasos de calidad, velocidad 0.92, ruta del modelo. Los videos la heredan; un video puede cambiarla en su `narracion.json` |
+| `voz.json` | Configuración del canal: voz M1, idioma `es`, 12 pasos de calidad, velocidad 0.92 y ruta del modelo. Los videos la heredan; un video puede cambiarla en su `narracion.json` |
 | `supertonic_m1.py` | Motor de la voz + escritura fonética (lo usan los videos y `probar_voz.py`) |
 | `M1.json` | El estilo de la voz M1 en el formato oficial de Supertonic (extraído y verificado bit a bit) |
-| `instalar_voz.sh` | Descarga el modelo Supertonic 3 INT8 (release oficial de sherpa-onnx, ~129 MB) y verifica su SHA-256 |
+| `instalar_voz.sh` | Descarga el modelo Supertonic 3 INT8 (release oficial de sherpa-onnx, ~129 MB), verifica su SHA-256 y lo deja en `voz/modelo/`. Los scripts lo llaman solos cuando hace falta |
 | `probar_voz.py` | Genera una muestra con la voz configurada |
 | `extraer_estilo.py` | Cómo se obtuvo `M1.json` (sirve para extraer cualquier otra voz: F1–F5, M1–M5) |
 | `muestra-M1.m4a` | Muestra de 11 s: la frase de prueba de `probar_voz.py`, con la misma masterización del video (`probar_voz.py` entrega el audio sin masterizar, unos 8 dB más bajo) |
@@ -47,6 +47,6 @@ Además, conviene escribir «inteligencia artificial» en lugar de «IA» (la si
 
 ## Notas
 
-- El modelo usado es la versión INT8 que publica sherpa-onnx a partir del modelo oficial de Supertone. Licencias: código MIT, modelo OpenRAIL-M (ver `LICENCIA-MODELO.md`).
-- M1 es la más aguda de las cinco voces masculinas (alrededor de 140–150 Hz; M2 a M5 están entre 90 y 120 Hz). Para un tono más grave, prueba `"voz": "M2"` (o M3–M5) en `voz.json`.
+- El modelo usado es la versión INT8 que publica sherpa-onnx a partir del modelo oficial de Supertone. Licencias: el código de Supertonic es MIT, sherpa-onnx es Apache-2.0, y el modelo y `M1.json` están bajo OpenRAIL-M. Antes de compartir el proyecto, lee `LICENCIA-MODELO.md`.
+- M1 es la más aguda de las cinco voces masculinas (≈130–150 Hz; M2 a M5 rondan los 90–125 Hz). Para un tono más grave, prueba `"voz": "M2"` (o M3–M5) en `voz.json` y luego `armar_video.sh --voz-todo`.
 - Supertonic genera cada toma con algo de variación: dos síntesis del mismo texto suenan parecido pero no idéntico. Por eso cada video guarda su locución final (`produccion/audio/narracion.flac`).

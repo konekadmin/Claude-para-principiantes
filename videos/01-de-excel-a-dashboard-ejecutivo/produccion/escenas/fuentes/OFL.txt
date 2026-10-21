@@ -1,4 +1,4 @@
-Inter — Copyright 2016-2023 The Inter Project Authors (https://github.com/rsms/inter)
+Copyright (c) 2016 The Inter Project Authors (https://github.com/rsms/inter)
 
 SIL Open Font License, Version 1.1
 

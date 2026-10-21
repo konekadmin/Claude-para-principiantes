@@ -7,7 +7,11 @@ NOMBRE=sherpa-onnx-supertonic-3-tts-int8-2026-05-11
 URL=https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/$NOMBRE.tar.bz2
 SHA=82fa96f91c4ef8abaae3a14a3f4153facf88bed821d1f7331cec2700f432c427
 ARCHIVOS="duration_predictor.int8.onnx text_encoder.int8.onnx vector_estimator.int8.onnx vocoder.int8.onnx tts.json unicode_indexer.bin voice.bin"
-completo() { for f in $ARCHIVOS; do [ -s "modelo/$NOMBRE/$f" ] || return 1; done; }
+# completo: los 7 archivos con contenido y la marca .instalado (con el SHA del paquete) que deja una instalación terminada
+completo() {
+  [ "$(cat "modelo/$NOMBRE/.instalado" 2>/dev/null)" = "$SHA" ] || return 1
+  for f in $ARCHIVOS; do [ -s "modelo/$NOMBRE/$f" ] || return 1; done
+}
 if completo; then echo "El modelo ya está en voz/modelo/$NOMBRE"; exit 0; fi
 mkdir -p modelo
 TMP=$(mktemp -d modelo/.descarga.XXXXXX)
@@ -19,5 +23,6 @@ if [ "$CALC" != "$SHA" ]; then echo "El SHA-256 no coincide ($CALC). Vuelve a in
 tar -xjf "$TMP/m.tar.bz2" -C "$TMP"
 rm -rf "modelo/$NOMBRE"
 mv "$TMP/$NOMBRE" "modelo/$NOMBRE"
+echo "$SHA" > "modelo/$NOMBRE/.instalado"
 completo || { echo "La extracción quedó incompleta."; exit 1; }
 echo "Listo: voz/modelo/$NOMBRE"

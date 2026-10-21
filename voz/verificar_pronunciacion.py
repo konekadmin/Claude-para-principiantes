@@ -4,9 +4,10 @@ Así se revisó el video: cada frase de narracion.json se transcribe y se compar
 de formato (números en cifras) y las repeticiones de Whisper en frases de una o dos palabras no son errores
 de la voz; lo que hay que mirar son las palabras cambiadas (por ejemplo «Nada especial» -> «No es especial»).
 
-Requisitos: pip install sherpa-onnx soundfile numpy y el modelo Whisper turbo de sherpa-onnx:
-  curl -LO https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-turbo.tar.bz2
-  tar xjf sherpa-onnx-whisper-turbo.tar.bz2 -C voz/modelo/
+Requisitos: python3 -m pip install sherpa-onnx soundfile numpy y el modelo Whisper turbo de sherpa-onnx (~564 MB):
+  mkdir -p voz/modelo
+  curl -L -o voz/modelo/whisper.tar.bz2 https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-turbo.tar.bz2
+  tar xjf voz/modelo/whisper.tar.bz2 -C voz/modelo/ && rm voz/modelo/whisper.tar.bz2
 Uso: python3 voz/verificar_pronunciacion.py videos/01-de-excel-a-dashboard-ejecutivo [id ...]
 """
 

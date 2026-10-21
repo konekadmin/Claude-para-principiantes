@@ -9,3 +9,7 @@ __pycache__/
 voz/modelo/
 # Pruebas de voz
 voz/*.wav
+
+# Entorno virtual y descargas
+.venv/
+*.tar.bz2

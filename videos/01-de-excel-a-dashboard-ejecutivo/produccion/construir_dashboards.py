@@ -1,4 +1,5 @@
-"""Arma los dashboards interactivos de material/ en un solo HTML cada uno (sin dependencias)."""
+"""Arma los dashboards interactivos de material/ en un solo HTML cada uno (sin dependencias; la fuente Inter se
+toma de Google Fonts si hay conexión, si no, se usa la del sistema)."""
 
 from pathlib import Path
 

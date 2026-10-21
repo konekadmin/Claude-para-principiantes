@@ -19,7 +19,7 @@ OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que el 
 
 ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas, lógica y las métricas más importantes. Valida que los totales cuadren.
 
-PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
+PROPUESTA: Proponme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
 ```
 
 ## Plantilla reutilizable
@@ -41,7 +41,7 @@ OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que [QU
 
 ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas, lógica y las métricas más importantes. Valida que los totales cuadren.
 
-PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
+PROPUESTA: Proponme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
 ```
 
 ## Adaptaciones
@@ -57,7 +57,7 @@ OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que el 
 
 ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas y lógica. Calcula el cumplimiento de meta, el crecimiento interanual, el ticket promedio y la concentración por cliente. Valida que los totales cuadren.
 
-PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles (vendedor, canal, producto), los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
+PROPUESTA: Proponme los KPIs principales, los mejores gráficos, filtros útiles (vendedor, canal, producto), los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
 ```
 
 ### Gastos
@@ -71,7 +71,7 @@ OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que el 
 
 ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas y lógica. Identifica qué áreas y categorías explican la variación y separa lo recurrente de lo puntual cuando los datos lo permitan. Valida que los totales cuadren.
 
-PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
+PROPUESTA: Proponme los KPIs principales, los mejores gráficos, filtros útiles, los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
 ```
 
 ### Cobranzas
@@ -85,7 +85,7 @@ OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que el 
 
 ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas y lógica. Calcula la antigüedad de la cartera por tramos (0-30, 31-60, 61-90, +90 días), el porcentaje vencido, los días de cobro (DSO) y la concentración en los principales clientes. Valida que los totales cuadren.
 
-PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles (cliente, tramo, moneda), los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
+PROPUESTA: Proponme los KPIs principales, los mejores gráficos, filtros útiles (cliente, tramo, moneda), los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
 ```
 
 ### Inventario
@@ -99,7 +99,7 @@ OBJETIVO: Quiero un dashboard simple, limpio, profesional e interactivo, que el 
 
 ANÁLISIS: Antes de crear nada, analiza el archivo. Entiende su estructura, columnas y lógica. Calcula la rotación, los días de inventario, la clasificación ABC y los productos sin movimiento. Valida que los totales cuadren.
 
-PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útiles (almacén, categoría, clase ABC), los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
+PROPUESTA: Proponme los KPIs principales, los mejores gráficos, filtros útiles (almacén, categoría, clase ABC), los insights de negocio clave y el layout ideal. Luego escribe el prompt perfecto para construir ese dashboard y ejecútalo.
 ```
 
 ## Antes de presentar

@@ -1,6 +1,6 @@
 """Mezcla final del audio: locución + colchón musical suave (sintetizado aquí, sin derechos de terceros).
 
-La música solo suena en la cortinilla del logo y en la pantalla final, donde no hay voz, ~14 dB por debajo de ella.
+La música solo suena en la cortinilla del logo y en la pantalla final (bajo las dos últimas frases), ~14 dB por debajo de la voz.
 Uso: python3 produccion/mezcla.py [voz.wav]   (por defecto audio/narracion.flac; ensamblar.sh le pasa la voz ya masterizada)
 Salidas: produccion/audio/mezcla.wav (voz + música) y produccion/audio/musica.wav (solo música, para la cortinilla)
 """
