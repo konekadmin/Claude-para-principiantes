@@ -512,13 +512,13 @@ lo conectas a tus datos,
 y Claude hace el resto,
 
 115
-00:06:39,329 --> 00:06:42,430
+00:06:39,329 --> 00:06:42,450
 incluida la narrativa para gerencia.
 
 116
-00:06:42,450 --> 00:06:44,070
+00:06:43,050 --> 00:06:44,670
 El video está aquí arriba.
 
 117
-00:06:44,090 --> 00:06:45,360
+00:06:44,690 --> 00:06:45,960
 Nos vemos ahí.

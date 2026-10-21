@@ -12,6 +12,6 @@ trap 'rm -rf "$TMP"' EXIT
 node render.cjs --from "$A" --to "$B" --solo logo --out "$TMP/logo.mp4"
 ffmpeg -y -hide_banner -loglevel error -i "$TMP/logo.mp4" -ss "$A" -t "$D" -i audio/musica.wav \
   -map 0:v:0 -map 1:a:0 -c:v copy \
-  -af "afade=t=in:st=0:d=0.15,afade=t=out:st=$(python3 -c "print(round($D-0.5,3))"):d=0.5,volume=6dB,alimiter=limit=0.7:level=false" \
+  -af "afade=t=in:st=0:d=0.15,afade=t=out:st=$(python3 -c "print(round($D-0.5,3))"):d=0.5,loudnorm=I=-18:TP=-2:LRA=7" \
   -c:a aac -b:a 192k -ar 48000 -movflags +faststart ../../../marca/konek-intro.mp4
 echo "ok: marca/konek-intro.mp4 (${D} s)"

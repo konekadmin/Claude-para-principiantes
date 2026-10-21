@@ -39,7 +39,7 @@ PROPUESTA: Propónme los KPIs principales, los mejores gráficos, filtros útile
 
 Inspiración: video de Nicolas Boucher, "Claude: Build Financial Dashboards in Minutes" (mayo 2026). La idea se adaptó; el ejemplo, los datos y los prompts son propios.
 
-Nota: los datos del ejemplo son ficticios. La interfaz de chat que aparece es una recreación; los dashboards se construyeron con Claude a partir del Excel de ejemplo. Narración con voz sintética (Supertonic 3).
+Nota: los datos del ejemplo son ficticios. La interfaz de chat que aparece es una recreación; los dashboards del video los programó Claude para este ejemplo, siguiendo lo que piden los prompts. Narración con voz sintética (Supertonic 3).
 
 Konek | Finanzas & IA — Domina la tecnología para trabajar de forma más inteligente y tomar el control total de tu dinero. Te enseñamos a construir sistemas de gestión, automatizar procesos y tomar decisiones financieras con Inteligencia Artificial (Claude, ChatGPT y herramientas No-Code).
 

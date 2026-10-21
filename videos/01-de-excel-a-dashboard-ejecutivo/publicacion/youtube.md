@@ -1,8 +1,8 @@
 # Publicación en YouTube — De Excel a dashboard ejecutivo con Claude
 
-Canal: **Konek | Finanzas & IA** · Duración: **7:05** · Voz: Supertonic 3, M1 (masculina)
+Canal: **Konek | Finanzas & IA** · Duración: **7:02** · Voz: Supertonic 3, M1 (masculina)
 
-> Antes de publicar, reemplaza `[LINK_COMUNIDAD]` (descripción y comentario fijado) por el link real de la comunidad en Skool.
+> Antes de publicar, pon el link real de la comunidad en Skool en `produccion/enlaces.json` y vuelve a correr `python3 produccion/descripcion.py` (actualiza la descripción y el comentario fijado).
 
 ## Título
 
@@ -17,11 +17,11 @@ Alternativas para la prueba A/B de títulos (Probar y comparar):
 ## Miniatura
 
 - `miniatura.png` — lista para subir (1280×720).
-- `miniatura-con-espacio-para-cara.png` — misma composición con el lugar marcado para tu cara con expresión de sorpresa (como pedía el guion). Se edita desde `produccion/escenas/miniatura.html`.
+- `miniatura-espacio-cara.png` — misma composición con el lado derecho libre para tu cara con expresión de sorpresa (como pedía el guion). `guia-cara.png` es una guía transparente del lugar sugerido para superponerla en tu editor. Guarda tu versión con otro nombre: `armar_video.sh` regenera las miniaturas. Se editan desde `produccion/escenas/miniatura.html`.
 
 ## Descripción
 
-Está completa en `descripcion.txt` (lista para copiar y pegar, 3209 de 5.000 caracteres). Capítulos calculados del video final:
+Está completa en `descripcion.txt` (lista para copiar y pegar, 3236 de 5.000 caracteres). Capítulos calculados del video final:
 
 ```
 0:00 De Excel a dashboard
@@ -52,18 +52,18 @@ Plantilla completa del prompt de 5 partes + Excel de práctica: [LINK_COMUNIDAD]
 | Campo | Valor |
 | --- | --- |
 | Idioma del video | Español |
-| Subtítulos | Subir `subtitulos.es.srt` como Español (sincronizados con la locución) |
+| Subtítulos | Subir `subtitulos.es.srt` como español (sincronizados con la locución) |
 | Categoría | Educación (o Ciencia y tecnología) |
 | Audiencia | No, no es contenido creado para niños |
 | Capítulos automáticos | Desactivados: ya van en la descripción |
 | Lista de reproducción | Claude para finanzas (o la serie de dashboards) |
 | Contenido alterado o sintético | La narración usa voz sintética, pero no imita a una persona real ni muestra hechos realistas falsos. Revisa la política vigente de YouTube al subir; la descripción ya lo aclara. |
 
-## Pantalla final (6:45 – 7:05)
+## Pantalla final (6:42 – 7:02)
 
 Los últimos 20 segundos dejan marcos vacíos para los elementos de YouTube:
 
-1. **Video** (arriba al centro — la locución dice «el video está aquí arriba»): el siguiente video, *Tu reporte mensual se hace solo*. Mientras no exista, usa «Mejor para el espectador» o una lista de reproducción.
+1. **Video** (arriba al centro; la locución dice «el video está aquí arriba» al comenzar la pantalla final): el siguiente video, *Tu reporte mensual se hace solo*. Mientras no exista, usa «Mejor para el espectador» o una lista de reproducción.
 2. **Suscribirse** (círculo abajo a la izquierda).
 3. **Otro video o lista** (rectángulo abajo a la derecha).
 

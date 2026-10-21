@@ -59,6 +59,7 @@
   if (q.has("guia")) {
     document.querySelectorAll("#thumb > :not(#face)").forEach((n) => (n.style.visibility = "hidden"));
     document.getElementById("thumb").style.background = "transparent";
+    document.documentElement.style.background = "transparent";
     document.body.style.background = "transparent";
     document.getElementById("face").style.display = "grid";
   }

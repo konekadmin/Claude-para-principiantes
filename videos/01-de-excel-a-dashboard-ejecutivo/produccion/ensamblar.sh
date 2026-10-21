@@ -6,7 +6,7 @@ MUDO=${1:?Uso: bash produccion/ensamblar.sh RUTA/video_mudo.mp4}
 case "$MUDO" in /*) ;; *) MUDO="$PWD/$MUDO" ;; esac
 cd "$(dirname "$0")"
 OUT=../publicacion/video.mp4
-OBJETIVO=-15.6
+OBJETIVO=-14.7
 # 1) voz: filtro pasa altos (70 Hz), compresión suave, ganancia fija y limitador de picos
 DIN="highpass=f=70,acompressor=threshold=-30dB:ratio=2:attack=10:release=200:makeup=1,aresample=48000"
 I=$(ffmpeg -hide_banner -nostats -i audio/narracion.flac -af "$DIN,ebur128" -f null - 2>&1 | sed -n '/Summary:/,$p' | awk '/ I:/{print $2; exit}')
