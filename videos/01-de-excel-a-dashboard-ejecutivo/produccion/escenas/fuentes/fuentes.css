@@ -1,0 +1,13 @@
+/* Inter e Inter Display (SIL OFL 1.1, ver OFL.txt) incluidas en el proyecto para que el render
+   salga igual en cualquier máquina, tenga o no las fuentes instaladas. */
+@font-face { font-family: "Inter"; font-weight: 400; font-style: normal; src: url(Inter-Regular.otf) format("opentype"); }
+@font-face { font-family: "Inter"; font-weight: 400; font-style: italic; src: url(Inter-Italic.otf) format("opentype"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url(Inter-Medium.otf) format("opentype"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url(Inter-SemiBold.otf) format("opentype"); }
+@font-face { font-family: "Inter"; font-weight: 700; src: url(Inter-Bold.otf) format("opentype"); }
+@font-face { font-family: "Inter"; font-weight: 800; src: url(Inter-ExtraBold.otf) format("opentype"); }
+@font-face { font-family: "Inter"; font-weight: 900; src: url(Inter-Black.otf) format("opentype"); }
+@font-face { font-family: "Inter Display"; font-weight: 600; src: url(InterDisplay-SemiBold.otf) format("opentype"); }
+@font-face { font-family: "Inter Display"; font-weight: 700; src: url(InterDisplay-Bold.otf) format("opentype"); }
+@font-face { font-family: "Inter Display"; font-weight: 800; src: url(InterDisplay-ExtraBold.otf) format("opentype"); }
+@font-face { font-family: "Inter Display"; font-weight: 900; src: url(InterDisplay-Black.otf) format("opentype"); }

@@ -5,8 +5,11 @@ Uso:
   python3 produccion/tts.py --modelo RUTA/sherpa-onnx-supertonic-3-tts-int8-2026-05-11
   python3 produccion/tts.py --backend supertonic  # paquete oficial `pip install supertonic`
 
-La voz (M1, fonética, motor) está configurada en voz/ en la raíz del proyecto; aquí solo se arma el guion:
-la voz, los pasos y la velocidad de este video salen de narracion.json.
+La voz (M1, fonética, motor) está configurada en voz/ en la raíz del proyecto (voz.json). Si un video
+necesita otra voz, pasos o velocidad, puede fijarlos en su narracion.json ("voz", "pasos", "velocidad", "idioma").
+
+Si falta la caché de segmentos (por ejemplo, al partir del zip), cada frase cuyo texto no cambió se recorta de
+audio/narracion.flac con las muestras exactas guardadas en timeline.json: así --rehacer X solo cambia la frase X.
 
 Salidas:
   produccion/audio/narracion.flac     locución completa (44.1 kHz, mono, sin normalizar)
@@ -26,7 +29,7 @@ import soundfile as sf
 
 BASE = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE.parents[2] / "voz"))
-from supertonic_m1 import SR, motor as crear_motor, recortar_silencio  # noqa: E402
+from supertonic_m1 import CONFIG, SR, motor as crear_motor, recortar_silencio  # noqa: E402
 from supertonic_m1 import texto_tts as fonetica  # noqa: E402
 
 
@@ -42,7 +45,12 @@ def main():
     args = ap.parse_args()
 
     plan = json.loads((BASE / "narracion.json").read_text(encoding="utf-8"))
-    voz, pasos, vel, idioma = plan["voz"], plan["pasos"], plan["velocidad"], plan["idioma"]
+    voz, pasos, vel, idioma = (plan.get(k, CONFIG[k]) for k in ("voz", "pasos", "velocidad", "idioma"))
+    # toma previa (para reconstruir la caché sin volver a sintetizar)
+    previo, audio_previo = {}, None
+    if (BASE / "timeline.json").exists() and (BASE / "audio" / "narracion.flac").exists():
+        previo = json.loads((BASE / "timeline.json").read_text(encoding="utf-8")).get("items", {})
+        audio_previo, _ = sf.read(BASE / "audio" / "narracion.flac", dtype="float32")
     cache = BASE / "audio" / "segmentos"
     cache.mkdir(parents=True, exist_ok=True)
 
@@ -56,18 +64,25 @@ def main():
 
     partes = [np.zeros(int(plan["inicio"] * SR), dtype=np.float32)]
     t = plan["inicio"]
-    tl = {"inicio": plan["inicio"], "items": {}, "orden": []}
+    n = len(partes[0])  # muestras acumuladas
+    tl = {"inicio": plan["inicio"], "voz": voz, "pasos": pasos, "velocidad": vel, "items": {}, "orden": []}
     for it in plan["items"]:
-        if "gap" in it:
-            dur = it["gap"]
+        if "gap" in it or "gap_hasta" in it:
+            # gap_hasta: completa hasta `total` segundos contados desde el inicio de otra marca
+            dur = it["gap"] if "gap" in it else it["total"] - (t - tl["items"][it["gap_hasta"]]["start"])
             partes.append(np.zeros(int(round(dur * SR)), dtype=np.float32))
             tl["items"][it["id"]] = {"sec": it["sec"], "start": round(t, 3), "end": round(t + dur, 3), "gap": True}
         else:
             tt = texto_tts(it)
             clave = hashlib.sha1(f"{args.backend}|{voz}|{pasos}|{vel}|{idioma}|{tt}".encode()).hexdigest()[:12]
             f = cache / f"{it['id']}-{clave}.wav"
+            pv = previo.get(it["id"], {})
             if f.exists() and it["id"] not in args.rehacer:
                 x, _ = sf.read(f, dtype="float32")
+            elif (it["id"] not in args.rehacer and audio_previo is not None and pv.get("tts") == tt
+                  and pv.get("clave") == clave and "m0" in pv):
+                x = audio_previo[pv["m0"]:pv["m1"]].copy()
+                sf.write(f, x, SR)
             else:
                 x = recortar_silencio(sintetizar(tt))
                 sf.write(f, x, SR)
@@ -76,9 +91,10 @@ def main():
             pausa = it.get("pause", 0.3)
             partes += [x, np.zeros(int(round(pausa * SR)), dtype=np.float32)]
             tl["items"][it["id"]] = {"sec": it["sec"], "start": round(t, 3), "end": round(t + dur, 3),
-                                     "text": it["text"], "tts": tt}
+                                     "text": it["text"], "tts": tt, "clave": clave, "m0": n, "m1": n + len(x)}
             dur += pausa
         tl["orden"].append(it["id"])
+        n += len(partes[-1]) + (len(partes[-2]) if "text" in it else 0)
         t += dur
 
     audio = np.concatenate(partes)

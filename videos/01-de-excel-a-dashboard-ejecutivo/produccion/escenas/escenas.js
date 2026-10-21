@@ -50,7 +50,7 @@
 
   // ---------- capas globales ----------
   const bg = mk(`<div class="layer bgfx"><div class="blob b1"></div><div class="blob b2"></div><div class="grid"></div></div>`);
-  const LOGO_SVG = (id) => `<svg viewBox="0 0 120 120" fill="none"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs>
+  const LOGO_SVG = (id) => `<svg viewBox="0 0 120 120" fill="none"><defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs>
     <g stroke="url(#${id})" stroke-width="10" stroke-linecap="round"><path class="lg-p" d="M34 18 V102"/><path class="lg-p" d="M34 62 L90 22"/><path class="lg-p" d="M52 50 L90 98"/></g>
     <g fill="url(#${id})"><circle class="lg-n" cx="34" cy="18" r="10"/><circle class="lg-n" cx="34" cy="102" r="10"/><circle class="lg-n" cx="90" cy="22" r="10"/><circle class="lg-n" cx="90" cy="98" r="10"/><circle class="lg-n" cx="34" cy="62" r="8"/></g></svg>`;
   const wm = mk(`<div id="wm">${LOGO_SVG("wmg")}<span>Konek</span></div>`);
@@ -738,7 +738,7 @@
     const sc = scene("ideas", a, b, `
       <div class="abs id-head" style="left:0;right:0;top:64px;text-align:center"><span class="h-l">Las <span class="grad">3 ideas</span> clave</span></div>
       <div class="abs id-nums" style="left:0;right:0;top:330px;display:flex;justify-content:center;gap:60px">
-        ${[1, 2, 3].map((n) => `<div class="card nn${n}" style="width:300px;height:300px;display:grid;place-items:center;font-family:'Inter Display',Inter;font-weight:800;font-size:150px;color:var(--cyan);text-shadow:0 0 40px #22d3ee66">${n}</div>`).join("")}</div>
+        ${[1, 2, 3].map((n) => `<div class="card nn${n}" style="width:300px;height:300px;display:grid;place-items:center;font-family:'Inter Display',Inter,sans-serif;font-weight:800;font-size:150px;color:var(--cyan);text-shadow:0 0 40px #22d3ee66">${n}</div>`).join("")}</div>
       <div class="abs id-c1 card idea" style="left:210px;top:220px;width:1500px">
         <div style="display:flex;gap:30px;align-items:center"><div class="n">1</div><div class="t" style="margin:0">Primero que piense, después que construya.</div></div>
         <div style="margin-top:56px;display:flex;flex-direction:column;gap:30px">
@@ -919,7 +919,7 @@
   // 9) CIERRE Y PUENTE AL SIGUIENTE VIDEO
   // =====================================================================
   {
-    const a = S("e1a") - 0.3, b = S("endscreen") + 0.3;
+    const a = S("e1a") - 0.3, b = S("pantalla_final") + 0.3;
     const sc = scene("cierre", a, b, `
       <div class="abs ce-dash" style="left:0;top:0;width:1600px;height:900px;transform-origin:0 0"></div>
       <div class="abs ce-dim" style="inset:0;background:#050912"></div>
@@ -936,8 +936,7 @@
           <div class="card nf2" style="padding:26px 30px;font-size:28px;font-weight:700;text-align:center;width:250px;border-color:#22d3ee88;box-shadow:0 0 40px #22d3ee22">Claude</div>
           <span class="nar2" style="font-size:44px;color:var(--muted)">→</span>
           <div class="card nf3" style="padding:26px 30px;font-size:28px;font-weight:700;text-align:center;width:420px">Dashboard + narrativa<div style="font-size:22px;color:var(--muted);font-weight:500;margin-top:4px">para gerencia</div></div>
-          <span class="chip nf4" style="font-size:26px;border-color:#a78bfa88;color:var(--violet)">${icon.loop.replace('width="56" height="56"', 'width="34" height="34"')}cada mes</span></div>
-        <div class="txt nx2" style="font-size:34px">El video está <b style="color:var(--ink)">aquí arriba ↑</b></div></div>`,
+          <span class="chip nf4" style="font-size:26px;border-color:#a78bfa88;color:var(--violet)">${icon.loop.replace('width="56" height="56"', 'width="34" height="34"')}cada mes</span></div></div>`,
       render);
     const dash = KV.createDashboard(2, sc.$(".ce-dash"));
     function render(t) {
@@ -958,7 +957,7 @@
       sty(lp, { o: Math.min(ramp(t, E("e1c") - 0.2, 0.3), 1 - ramp(t, lEnd, 0.3)), r: (t * 160) % 360 });
       sty(sc.$(".ce-loop"), { o: t > S("e1b") - 0.2 && t < lEnd + 0.35 ? 1 : 0 });
       pop(sc.$(".ce-q"), t, S("e2a") - 0.05, { until: S("e2b") - 0.05 });
-      const nEnd = S("endscreen") + 0.1;
+      const nEnd = S("pantalla_final") + 0.1;
       pop(sc.$(".nx0"), t, S("e2b") - 0.05, { until: nEnd });
       pop(sc.$(".nx1"), t, W("e2b", "convertir") - 0.1, { until: nEnd });
       pop(sc.$(".nf1"), t, W("e2b", "subes el archivo") - 0.1, { until: nEnd });
@@ -967,7 +966,6 @@
       pop(sc.$(".nar2"), t, W("e2b", "Claude hace") + 0.2, { until: nEnd, dy: 0 });
       pop(sc.$(".nf3"), t, W("e2b", "incluida la narrativa") - 0.1, { until: nEnd });
       pop(sc.$(".nf4"), t, W("e2b", "incluida la narrativa") + 0.4, { until: nEnd, ds: 0.2 });
-      pop(sc.$(".nx2"), t, S("e3a") - 0.05, { until: nEnd });
       sty(sc.$(".ce-next"), { o: t > S("e2b") - 0.2 ? 1 : 0 });
     }
   }
@@ -976,10 +974,10 @@
   // 10) PANTALLA FINAL (20 s para los elementos de YouTube)
   // =====================================================================
   {
-    const a = S("endscreen");
+    const a = S("pantalla_final");
     const sc = scene("endscreen", a, DUR + 1, `
       <div class="abs" style="left:72px;top:56px;display:flex;align-items:center;gap:16px"><div style="width:64px;height:64px">${LOGO_SVG("esg")}</div><div><div style="font-weight:800;font-size:34px">Konek</div><div style="font-size:18px;letter-spacing:.28em;color:var(--ink-2);font-weight:600">FINANZAS &amp; IA</div></div></div>
-      <div class="abs es-t" style="left:0;right:0;top:80px;text-align:center;font-size:24px;letter-spacing:.2em;color:var(--muted);font-weight:700">SIGUIENTE VIDEO</div>
+      <div class="abs es-t" style="left:0;right:0;top:80px;text-align:center;font-size:24px;letter-spacing:.2em;color:var(--muted);font-weight:700">SIGUIENTE VIDEO <span class="es-flecha cyan" style="display:inline-block">↓</span></div>
       <div class="endslot es-v" style="left:536px;top:130px;width:848px;height:477px;flex-direction:column;gap:10px">Siguiente video</div>
       <div class="abs es-sub" style="left:536px;top:690px;width:250px;text-align:center"><div class="endslot" style="position:relative;width:250px;height:250px;border-radius:50%">Suscríbete</div></div>
       <div class="endslot es-l" style="left:836px;top:690px;width:548px;height:250px">Otro video recomendado</div>
@@ -987,6 +985,10 @@
       render, { fi: 0.5, fo: 0.01 });
     function render(t) {
       pop(sc.$(".es-v"), t, a + 0.2, { dy: 20 });
+      // «El video está aquí arriba»: la flecha señala el marco del siguiente video mientras se dice
+      const fl = sc.$(".es-flecha");
+      fl.style.transform = `translateY(${8 * Math.sin((t - a) * 7) * env(t, S("e3a") - 0.1, E("e3b") + 1.5, 0.2, 0.5)}px)`;
+      sc.$(".es-t").style.color = env(t, S("e3a") - 0.1, E("e3b") + 1.5, 0.2, 0.5) > 0.5 ? "var(--ink)" : "var(--muted)";
       pop(sc.$(".es-sub"), t, a + 0.4, { dy: 20 });
       pop(sc.$(".es-l"), t, a + 0.55, { dy: 20 });
       pop(sc.$(".es-c"), t, a + 0.8, { dy: 10 });
@@ -1010,7 +1012,7 @@
     b1.style.left = 980 + 260 * Math.cos(t * 0.11) + "px"; b1.style.top = -260 + 180 * Math.sin(t * 0.09) + "px";
     b2.style.left = -240 + 220 * Math.sin(t * 0.07) + "px"; b2.style.top = 480 + 160 * Math.cos(t * 0.1) + "px";
     for (const sc of scenes) {
-      const on = t >= sc.from && t < sc.to;
+      const on = t >= sc.from && t < sc.to && (!window.SOLO || sc.name === window.SOLO);
       if (!on) { if (sc.vis) { sc.el.style.display = "none"; sc.vis = false; } continue; }
       if (!sc.vis) { sc.el.style.display = "block"; sc.vis = true; }
       sc.el.style.opacity = Math.min(sc.from <= 0 ? 1 : ramp(t, sc.from, sc.fi), 1 - clamp01((t - (sc.to - sc.fo)) / sc.fo));
@@ -1024,8 +1026,9 @@
       chapter.querySelector(".name").textContent = cap[2];
       sty(chapter, { o: env(t, cap[0], cap[0] + 3.7, 0.35, 0.4), x: -30 * (1 - ramp(t, cap[0], 0.45)) });
     } else sty(chapter, { o: 0 });
+    if (window.SOLO) sty(chapter, { o: 0 });
     // marca de agua (fuera del logo y la pantalla final)
-    sty(wm, { o: t > E("logo") && t < S("endscreen") ? 0.55 : 0 });
+    sty(wm, { o: !window.SOLO && t > E("logo") && t < S("pantalla_final") ? 0.55 : 0 });
     // cursor
     if (cur) { sty(cursor, { o: 1, x: cur.x - 6, y: cur.y - 4 }); } else sty(cursor, { o: 0 });
   }

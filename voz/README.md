@@ -4,20 +4,22 @@ La locución de los videos de Konek usa **Supertonic 3**, voz **M1** (masculina)
 
 | Archivo | Para qué |
 | --- | --- |
-| `voz.json` | Configuración: voz M1, idioma `es`, 12 pasos de calidad, velocidad 0.92, ruta del modelo |
+| `voz.json` | Configuración del canal: voz M1, idioma `es`, 12 pasos de calidad, velocidad 0.92, ruta del modelo. Los videos la heredan; un video puede cambiarla en su `narracion.json` |
 | `supertonic_m1.py` | Motor de la voz + escritura fonética (lo usan los videos y `probar_voz.py`) |
 | `M1.json` | El estilo de la voz M1 en el formato oficial de Supertonic (extraído y verificado bit a bit) |
 | `instalar_voz.sh` | Descarga el modelo Supertonic 3 INT8 (release oficial de sherpa-onnx, ~129 MB) y verifica su SHA-256 |
 | `probar_voz.py` | Genera una muestra con la voz configurada |
 | `extraer_estilo.py` | Cómo se obtuvo `M1.json` (sirve para extraer cualquier otra voz: F1–F5, M1–M5) |
-| `muestra-M1.m4a` | Muestra de 11 s de la voz tal como suena en el video |
+| `muestra-M1.m4a` | Muestra de 11 s: la frase de prueba de `probar_voz.py`, con la misma masterización del video (`probar_voz.py` entrega el audio sin masterizar, unos 8 dB más bajo) |
+| `verificar_pronunciacion.py` | Transcribe cada frase de un video con Whisper para detectar palabras mal pronunciadas (opcional) |
+| `LICENCIA-MODELO.md` | Licencia y atribución del modelo (OpenRAIL-M) |
 
 ## Uso
 
 ```bash
-pip install sherpa-onnx soundfile numpy
-bash voz/instalar_voz.sh                          # una sola vez
-python3 voz/probar_voz.py "Hola, esto es una prueba de la voz de Konek."
+python3 -m pip install "sherpa-onnx>=1.13.5" soundfile numpy   # probado con sherpa-onnx 1.13.8
+bash voz/instalar_voz.sh                                        # una sola vez
+python3 voz/probar_voz.py "Hola, esto es una prueba de la voz de Konek."   # -> voz/prueba-M1.wav
 ```
 
 Para usar `M1.json` con el paquete oficial (`pip install supertonic`, descarga el modelo completo de Hugging Face):
@@ -45,5 +47,6 @@ Además, conviene escribir «inteligencia artificial» en lugar de «IA» (la si
 
 ## Notas
 
-- El modelo usado es la versión INT8 que publica sherpa-onnx a partir del modelo oficial de Supertone. Licencias: código MIT, modelo OpenRAIL-M ([Supertone/supertonic-3](https://huggingface.co/Supertone/supertonic-3)).
+- El modelo usado es la versión INT8 que publica sherpa-onnx a partir del modelo oficial de Supertone. Licencias: código MIT, modelo OpenRAIL-M (ver `LICENCIA-MODELO.md`).
+- M1 es la más aguda de las cinco voces masculinas (alrededor de 140–150 Hz; M2 a M5 están entre 90 y 120 Hz). Para un tono más grave, prueba `"voz": "M2"` (o M3–M5) en `voz.json`.
 - Supertonic genera cada toma con algo de variación: dos síntesis del mismo texto suenan parecido pero no idéntico. Por eso cada video guarda su locución final (`produccion/audio/narracion.flac`).

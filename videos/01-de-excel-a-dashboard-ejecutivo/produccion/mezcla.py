@@ -2,7 +2,7 @@
 
 La música solo suena en la cortinilla del logo y en la pantalla final, donde no hay voz, ~14 dB por debajo de ella.
 Uso: python3 produccion/mezcla.py [voz.wav]   (por defecto audio/narracion.flac; ensamblar.sh le pasa la voz ya masterizada)
-Salida: produccion/audio/mezcla.wav
+Salidas: produccion/audio/mezcla.wav (voz + música) y produccion/audio/musica.wav (solo música, para la cortinilla)
 """
 
 import sys
@@ -92,7 +92,7 @@ def main():
     poner(paso_bajo(acorde(["C3", "G3", "B3", "D4", "E4"], d, rng, 0.5, 1.4), 2200) * 0.9, logo["start"] - 0.2)
 
     # pantalla final: progresión lenta Am9 - Fmaj9 - Cmaj9 - G6
-    fin = tl["items"]["endscreen"]
+    fin = {"start": tl["items"]["pantalla_final"]["start"], "end": tl["items"]["endscreen"]["end"]}
     t0, largo = fin["start"] - 0.4, fin["end"] - fin["start"] + 0.4
     prog = [["A2", "E3", "G3", "B3", "C4"], ["F3", "A3", "C4", "E4", "G4"], ["C3", "G3", "B3", "D4", "E4"], ["G3", "B3", "D4", "E4", "A4"]]
     paso = largo / len(prog)
@@ -111,6 +111,7 @@ def main():
     rms_voz = np.sqrt(np.mean([rms(voz, it["start"], it["end"]) ** 2 for it in frases]))
     rms_pad = rms(musica, fin["start"] + 1, fin["end"] - 4)
     musica *= rms_voz * 10 ** (-14 / 20) / rms_pad
+    sf.write(BASE / "audio" / "musica.wav", musica.astype(np.float32), SR, subtype="PCM_16")  # para la cortinilla
     mezcla = voz + musica.astype(np.float32)
     pico = np.max(np.abs(mezcla))
     if pico > 0.98:

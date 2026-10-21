@@ -17,13 +17,14 @@ PAGINA = """<!doctype html>
 html, body {{ margin: 0; background: #070b14; min-height: 100%; }}
 #stage {{ transform-origin: 0 0; width: 1600px; height: 900px; }}
 #wrap {{ overflow: hidden; margin: 0 auto; }}
+#marco {{ overflow-x: auto; }}
 .nota {{ font: 12px Inter, system-ui, sans-serif; color: #7d89a3; text-align: center; padding: 10px 16px 18px; }}
 {css}
 </style>
 </head>
 <body>
-<div id="wrap"><div id="stage"></div></div>
-<div class="nota">{nota}</div>
+<div id="marco"><div id="wrap"><div id="stage"></div></div></div>
+<div class="nota">{nota} · se ve mejor en computadora</div>
 <script>
 {data}
 </script>
@@ -35,7 +36,8 @@ html, body {{ margin: 0; background: #070b14; min-height: 100%; }}
   const dash = KonekViz.createDashboard({kind}, document.getElementById("stage"), {{ progress: 0 }});
   dash.enableInteraction();
   function fit() {{
-    const s = Math.min(window.innerWidth / 1600, 1.25);
+    // en pantallas angostas no se achica de más: se puede desplazar en horizontal
+    const s = Math.max(0.55, Math.min(window.innerWidth / 1600, 1.25));
     const st = document.getElementById("stage"), w = document.getElementById("wrap");
     st.style.transform = "scale(" + s + ")";
     w.style.width = 1600 * s + "px";

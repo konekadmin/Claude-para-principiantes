@@ -1,7 +1,7 @@
 """Genera los textos de YouTube (publicacion/youtube.md y publicacion/descripcion.txt).
 
 Los capítulos se calculan con timeline.json, así coinciden con el video renderizado.
-Reemplaza [LINK_COMUNIDAD] por el link real de la comunidad antes de publicar.
+El link de la comunidad se toma de produccion/enlaces.json: edítalo ahí (no en las salidas, que se regeneran).
 """
 
 import json
@@ -61,9 +61,10 @@ def mmss(t):
 
 def main():
     tl = json.loads((BASE / "timeline.json").read_text(encoding="utf-8"))
+    link = json.loads((BASE / "enlaces.json").read_text(encoding="utf-8"))["comunidad"]
     caps = [(0 if k is None else tl["items"][k]["start"] - m, n) for k, m, n in CAPITULOS]
     capitulos = "\n".join(f"{mmss(t)} {n}" for t, n in caps)
-    fin = tl["items"]["endscreen"]
+    fin = {"start": tl["items"]["pantalla_final"]["start"], "end": tl["items"]["endscreen"]["end"]}
 
     desc = f"""De un Excel exportado del ERP a un dashboard ejecutivo en minutos, con Claude. Pero lo importante no es el dashboard: es el prompt de 2 pasos que hace que Claude piense como un analista antes de diseñar. Funciona con gastos, ventas, cobranzas, inventario… con lo que tengas.
 
@@ -91,12 +92,13 @@ def main():
 
 Inspiración: video de Nicolas Boucher, "Claude: Build Financial Dashboards in Minutes" (mayo 2026). La idea se adaptó; el ejemplo, los datos y los prompts son propios.
 
-Nota: los datos del ejemplo son ficticios. La interfaz de chat que aparece es una recreación; los dashboards se construyeron con Claude a partir del Excel de ejemplo. Narración con voz sintética (Supertonic 3).
+Nota: los datos del ejemplo son ficticios. La interfaz de chat que aparece es una recreación; los dashboards del video los programó Claude para este ejemplo, siguiendo lo que piden los prompts. Narración con voz sintética (Supertonic 3).
 
 {CANAL}
 
 #Claude #Excel #Dashboard"""
 
+    desc = desc.replace("[LINK_COMUNIDAD]", link)
     assert len(desc) <= 5000, len(desc)
     tags = ", ".join(TAGS)
     assert len(tags) <= 500, len(tags)
@@ -106,7 +108,7 @@ Nota: los datos del ejemplo son ficticios. La interfaz de chat que aparece es un
 
 Canal: **Konek | Finanzas & IA** · Duración: **{mmss(tl['duracion'])}** · Voz: Supertonic 3, M1 (masculina)
 
-> Antes de publicar, reemplaza `[LINK_COMUNIDAD]` (descripción y comentario fijado) por el link real de la comunidad en Skool.
+> Antes de publicar, pon el link real de la comunidad en Skool en `produccion/enlaces.json` y vuelve a correr `python3 produccion/descripcion.py` (actualiza la descripción y el comentario fijado).
 
 ## Título
 
@@ -119,7 +121,7 @@ Alternativas para la prueba A/B de títulos (Probar y comparar):
 ## Miniatura
 
 - `miniatura.png` — lista para subir (1280×720).
-- `miniatura-con-espacio-para-cara.png` — misma composición con el lugar marcado para tu cara con expresión de sorpresa (como pedía el guion). Se edita desde `produccion/escenas/miniatura.html`.
+- `miniatura-espacio-cara.png` — misma composición con el lado derecho libre para tu cara con expresión de sorpresa (como pedía el guion). `guia-cara.png` es una guía transparente del lugar sugerido para superponerla en tu editor. Guarda tu versión con otro nombre: `armar_video.sh` regenera las miniaturas. Se editan desde `produccion/escenas/miniatura.html`.
 
 ## Descripción
 
@@ -139,7 +141,7 @@ Está completa en `descripcion.txt` (lista para copiar y pegar, {len(desc)} de 5
 
 ```
 ¿Qué reporte te quita más tiempo cada mes? Cuéntamelo aquí 👇 Con tus respuestas armo los próximos videos.
-Plantilla completa del prompt de 5 partes + Excel de práctica: [LINK_COMUNIDAD]
+Plantilla completa del prompt de 5 partes + Excel de práctica: {link}
 ```
 
 ## Configuración recomendada
@@ -147,7 +149,7 @@ Plantilla completa del prompt de 5 partes + Excel de práctica: [LINK_COMUNIDAD]
 | Campo | Valor |
 | --- | --- |
 | Idioma del video | Español |
-| Subtítulos | Subir `subtitulos.es.srt` como Español (sincronizados con la locución) |
+| Subtítulos | Subir `subtitulos.es.srt` como español (sincronizados con la locución) |
 | Categoría | Educación (o Ciencia y tecnología) |
 | Audiencia | No, no es contenido creado para niños |
 | Capítulos automáticos | Desactivados: ya van en la descripción |
@@ -158,7 +160,7 @@ Plantilla completa del prompt de 5 partes + Excel de práctica: [LINK_COMUNIDAD]
 
 Los últimos 20 segundos dejan marcos vacíos para los elementos de YouTube:
 
-1. **Video** (arriba al centro — la locución dice «el video está aquí arriba»): el siguiente video, *Tu reporte mensual se hace solo*. Mientras no exista, usa «Mejor para el espectador» o una lista de reproducción.
+1. **Video** (arriba al centro; la locución dice «el video está aquí arriba» al comenzar la pantalla final): el siguiente video, *Tu reporte mensual se hace solo*. Mientras no exista, usa «Mejor para el espectador» o una lista de reproducción.
 2. **Suscribirse** (círculo abajo a la izquierda).
 3. **Otro video o lista** (rectángulo abajo a la derecha).
 

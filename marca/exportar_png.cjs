@@ -1,8 +1,11 @@
 // Exporta los SVG de marca/ a PNG con fondo transparente (el avatar lleva su propio fondo).
-// Uso: node marca/exportar_png.cjs   (requiere playwright: npm install playwright && npx playwright install chromium)
-const { chromium } = require("playwright");
+// Uso: node marca/exportar_png.cjs
+// Usa el Playwright instalado en videos/01-de-excel-a-dashboard-ejecutivo/produccion (npm install ahí).
 const fs = require("fs");
 const path = require("path");
+const { chromium } = require(require.resolve("playwright", {
+  paths: [__dirname, path.join(__dirname, "..", "videos", "01-de-excel-a-dashboard-ejecutivo", "produccion"), ...(process.env.NODE_PATH || "").split(path.delimiter).filter(Boolean)],
+}));
 const SALIDAS = [
   ["konek-simbolo.svg", "konek-simbolo-512.png", 512],
   ["konek-simbolo.svg", "konek-simbolo-1024.png", 1024],

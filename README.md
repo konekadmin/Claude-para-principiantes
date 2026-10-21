@@ -20,10 +20,13 @@ Transformamos la teoría en ejecución práctica paso a paso: optimización de f
 
 ## Armar un video desde cero
 
+Requisitos: Python 3.10+, Node 18+ con npm y ffmpeg. Las fuentes (Inter, licencia OFL) vienen incluidas.
+
 ```bash
-pip install -r videos/01-de-excel-a-dashboard-ejecutivo/produccion/requirements.txt
+python3 -m venv .venv && source .venv/bin/activate          # en Windows: .venv\Scripts\activate
+python3 -m pip install -r videos/01-de-excel-a-dashboard-ejecutivo/produccion/requirements.txt
 bash videos/01-de-excel-a-dashboard-ejecutivo/produccion/armar_video.sh          # usa la locución ya generada
 bash videos/01-de-excel-a-dashboard-ejecutivo/produccion/armar_video.sh --voz    # regenera también la voz M1
 ```
 
-Requisitos: Python 3.10+, Node 18+ con npm, ffmpeg. La primera vez el script instala Playwright con Chromium y, si regeneras la voz, descarga el modelo de Supertonic 3 (~129 MB).
+La primera vez el script instala Playwright con Chromium (`npm install` en `produccion/`; en Linux puede hacer falta `npx playwright install-deps chromium`) y, si regeneras la voz, descarga el modelo de Supertonic 3 (~129 MB). El render toma unos 20 minutos con 4 núcleos.

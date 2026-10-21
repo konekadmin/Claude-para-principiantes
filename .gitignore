@@ -7,3 +7,5 @@ __pycache__/
 
 # Modelo de voz (se descarga con voz/instalar_voz.sh)
 voz/modelo/
+# Pruebas de voz
+voz/*.wav

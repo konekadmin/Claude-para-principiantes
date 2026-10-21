@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Miniatura · Excel a dashboard</title>
+<link rel="stylesheet" href="fuentes/fuentes.css">
 <link rel="stylesheet" href="konek-viz.css">
 <style>
   html, body { margin: 0; background: #070b14; }
@@ -31,13 +32,13 @@
 <div id="thumb">
   <div class="abs" style="left:48px;top:34px">
     <h1><span class="x">EXCEL</span> <span class="arr">→</span> <span class="d">DASHBOARD</span></h1>
-    <div style="margin-top:16px"><span class="tag">en 5 MIN</span><span style="font: 800 34px Inter, sans-serif; margin-left: 22px; color: #cbd5e1; vertical-align: 12px">con Claude</span></div>
+    <div style="margin-top:16px"><span class="tag">en 5 MIN</span><span style="font: 800 42px Inter, sans-serif; margin-left: 22px; color: #f1f5f9; vertical-align: 10px; text-shadow: 0 4px 20px #000c">con Claude</span></div>
   </div>
   <div class="abs" style="left:40px;top:360px;transform:rotate(-4deg)">
     <div class="lbl" style="background:#374151;color:#e5e7eb;display:inline-block;margin-bottom:10px">ANTES</div>
     <div class="sheet" style="width:470px;height:270px"><table id="tb"></table></div>
   </div>
-  <div class="abs" style="left:520px;top:450px;font: 900 110px Inter, sans-serif; color: #22d3ee; text-shadow: 0 0 40px #22d3ee">➜</div>
+  <svg class="abs" style="left:520px;top:470px;filter:drop-shadow(0 0 14px #22d3ee)" width="120" height="90" viewBox="0 0 120 90"><path d="M8 45 H92 M66 16 L98 45 L66 74" fill="none" stroke="#22d3ee" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>
   <div class="abs" id="after" style="left:660px;top:318px;transform:rotate(3deg)">
     <div class="lbl" style="background:#22d3ee;color:#04131a;display:inline-block;margin-bottom:10px">DESPUÉS</div>
     <div class="frame" id="frame" style="width:590px;height:332px"><div class="dash" id="dash"></div></div>
@@ -51,11 +52,17 @@
   let h = "<tr><td>Año</td><td>Área</td><td>Categoría</td><td>Importe</td></tr>";
   for (let i = 0; i < 12; i++) h += `<tr><td>${f[i].anio}</td><td>${f[i].area}</td><td>${f[i].categoria}</td><td style="text-align:right">${f[i].importe.toLocaleString("en-US", { minimumFractionDigits: 2 })}</td></tr>`;
   document.getElementById("tb").innerHTML = h;
-  const cara = new URLSearchParams(location.search).has("cara");
+  // ?cara=1: deja libre el lado derecho para tu cara · ?guia=1: solo la guía del lugar, con fondo transparente
+  const q = new URLSearchParams(location.search), cara = q.has("cara") || q.has("guia");
   const ancho = cara ? 430 : 590;
   const el = document.getElementById("dash");
-  if (cara) {
+  if (q.has("guia")) {
+    document.querySelectorAll("#thumb > :not(#face)").forEach((n) => (n.style.visibility = "hidden"));
+    document.getElementById("thumb").style.background = "transparent";
+    document.body.style.background = "transparent";
     document.getElementById("face").style.display = "grid";
+  }
+  if (cara) {
     document.getElementById("after").style.left = "600px";
     document.getElementById("after").style.top = "350px";
     document.getElementById("frame").style.width = ancho + "px";

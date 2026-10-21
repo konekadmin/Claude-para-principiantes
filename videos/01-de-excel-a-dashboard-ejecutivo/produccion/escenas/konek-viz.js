@@ -447,7 +447,15 @@
       tip.style.left = x + "px";
       tip.style.top = Math.max(10, y) + "px";
     }
-    function setState(patch) { Object.assign(st, patch); render(); }
+    function setState(patch) {
+      // render() reconstruye el HTML: se recuerda qué control tenía el foco para devolvérselo (teclado)
+      const a = document.activeElement, enCaja = a && box.contains(a);
+      const sel = enCaja && a.dataset.filter !== undefined ? `[data-filter="${CSS.escape(a.dataset.filter)}"]`
+        : enCaja && a.dataset.act ? `[data-act="${CSS.escape(a.dataset.act)}"]` : null;
+      Object.assign(st, patch);
+      render();
+      if (sel) box.querySelector(sel)?.focus();
+    }
     function tipAnchor(key) {
       const el = box.querySelector(`[data-tip="${CSS.escape(key)}"]`);
       if (!el) return null;

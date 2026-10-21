@@ -8,6 +8,8 @@ Todos los montos son ficticios, en soles (S/).
 """
 
 import json
+import zipfile
+from datetime import datetime
 from pathlib import Path
 
 from openpyxl import Workbook
@@ -136,6 +138,25 @@ def escribir_excel(path: Path):
     nota["A2"] = "Fuente simulada: exportación del ERP, gasto de septiembre por área y categoría, 2025 vs 2026, en soles (PEN)."
     nota.column_dimensions["A"].width = 110
     wb.save(path)
+    fijar_fechas(path)
+
+
+def fijar_fechas(path, fecha="2026-10-18T00:00:00Z"):
+    """openpyxl siempre graba la fecha actual; se fija para que el Excel sea idéntico en cada ejecución."""
+    with zipfile.ZipFile(path) as z:
+        partes = [(i, z.read(i.filename)) for i in z.infolist()]
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
+        for info, datos in partes:
+            if info.filename == "docProps/core.xml":
+                txt = datos.decode("utf-8")
+                for etiqueta in ("dcterms:created", "dcterms:modified"):
+                    a = txt.index(f"<{etiqueta}")
+                    a = txt.index(">", a) + 1
+                    b = txt.index(f"</{etiqueta}>", a)
+                    txt = txt[:a] + fecha + txt[b:]
+                datos = txt.encode("utf-8")
+            info.date_time = datetime(2026, 10, 18).timetuple()[:6]
+            z.writestr(info, datos)
 
 
 def escribir_js(path: Path):

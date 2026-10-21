@@ -17,6 +17,8 @@ DIR = Path(__file__).resolve().parent
 CONFIG = json.loads((DIR / "voz.json").read_text(encoding="utf-8"))
 MODELO_POR_DEFECTO = DIR / CONFIG["modelo"]
 SR = 44100
+ARCHIVOS_MODELO = ["duration_predictor.int8.onnx", "text_encoder.int8.onnx", "vector_estimator.int8.onnx",
+                   "vocoder.int8.onnx", "tts.json", "unicode_indexer.bin", "voice.bin"]
 # orden de las voces dentro de voice.bin (sherpa-onnx): F1..F5, M1..M5 -> M1 = sid 5
 VOCES = ["F1", "F2", "F3", "F4", "F5", "M1", "M2", "M3", "M4", "M5"]
 
@@ -50,8 +52,9 @@ class SherpaBackend:
         import sherpa_onnx
 
         d = Path(modelo or MODELO_POR_DEFECTO)
-        if not (d / "voice.bin").exists():
-            raise SystemExit(f"No encuentro el modelo en {d}. Ejecuta: bash voz/instalar_voz.sh")
+        faltan = [f for f in ARCHIVOS_MODELO if not (d / f).is_file()]
+        if faltan:
+            raise SystemExit(f"Falta el modelo en {d} ({', '.join(faltan)}). Ejecuta: bash voz/instalar_voz.sh")
         cfg = sherpa_onnx.OfflineTtsConfig(
             model=sherpa_onnx.OfflineTtsModelConfig(
                 supertonic=sherpa_onnx.OfflineTtsSupertonicModelConfig(
@@ -81,7 +84,9 @@ class SherpaBackend:
 
 
 class SupertonicBackend:
-    """Paquete oficial `pip install supertonic` (modelo completo, se descarga de Hugging Face). No probado aquí."""
+    """Paquete oficial `pip install supertonic` (descarga el modelo completo de Hugging Face).
+
+    Usa voz/M1.json como estilo. El video publicado se hizo con SherpaBackend (modelo INT8)."""
 
     def __init__(self, voz="M1", pasos=12, velocidad=0.92, idioma="es"):
         from supertonic import TTS

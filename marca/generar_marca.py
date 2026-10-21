@@ -7,8 +7,11 @@ Salidas en marca/:
   konek-avatar.svg                  avatar cuadrado para el canal (fondo oscuro, símbolo centrado)
 Los PNG se exportan con: node marca/exportar_png.cjs
 
-Requiere: pip install fonttools  y las fuentes Inter / Inter Display (https://rsms.me/inter/).
+Requiere: pip install fonttools. Usa las fuentes Inter incluidas en el proyecto
+(videos/01-de-excel-a-dashboard-ejecutivo/produccion/escenas/fuentes, licencia OFL).
 """
+
+import os
 
 import sys
 from pathlib import Path
@@ -18,8 +21,12 @@ from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
 
 DIR = Path(__file__).resolve().parent
-FUENTES = [Path("/usr/share/fonts/opentype/inter"), Path.home() / "Library/Fonts", Path("C:/Windows/Fonts")]
+FUENTES = [DIR.parent / "videos" / "01-de-excel-a-dashboard-ejecutivo" / "produccion" / "escenas" / "fuentes",
+           *[Path(p) for p in os.environ.get("KONEK_FUENTES", "").split(os.pathsep) if p],
+           Path("/usr/share/fonts/opentype/inter"), Path.home() / ".local/share/fonts", Path.home() / "Library/Fonts"]
 CIAN, VIOLETA = "#22d3ee", "#a78bfa"
+# para fondos claros, el mismo degradado más oscuro (contraste >= 3:1 sobre blanco)
+CIAN_OSC, VIOLETA_OSC = "#0891b2", "#7c3aed"
 
 
 def fuente(nombre):
@@ -43,10 +50,10 @@ def texto_a_trazo(font, texto, tam, x, y, espaciado=0.0):
     return " ".join(d), cx - x - espaciado * tam
 
 
-def simbolo(id_grad, x=0, y=0, escala=1.0):
+def simbolo(id_grad, x=0, y=0, escala=1.0, c1=CIAN, c2=VIOLETA):
     """El símbolo en un cuadro de 120x120 (mismo dibujo que el video)."""
     return f"""<g transform="translate({x} {y}) scale({escala})">
-  <defs><linearGradient id="{id_grad}" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="{CIAN}"/><stop offset="1" stop-color="{VIOLETA}"/></linearGradient></defs>
+  <defs><linearGradient id="{id_grad}" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="{c1}"/><stop offset="1" stop-color="{c2}"/></linearGradient></defs>
   <g stroke="url(#{id_grad})" stroke-width="10" stroke-linecap="round" fill="none"><path d="M34 18 V102"/><path d="M34 62 L90 22"/><path d="M52 50 L90 98"/></g>
   <g fill="url(#{id_grad})"><circle cx="34" cy="18" r="10"/><circle cx="34" cy="102" r="10"/><circle cx="90" cy="22" r="10"/><circle cx="90" cy="98" r="10"/><circle cx="34" cy="62" r="8"/></g>
 </g>"""
@@ -65,8 +72,9 @@ def main():
     palabra, w1 = texto_a_trazo(display, "Konek", 84, 148, 78)
     lema, w2 = texto_a_trazo(semibold, "FINANZAS & IA", 17.5, 151, 110, espaciado=0.32)
     ancho = 148 + max(w1, w2 + 3) + 24
-    for nombre, tinta, lema_color in (("oscuro", "#ffffff", "#b9c3d6"), ("claro", "#0b1222", "#4b5563")):
-        cuerpo = simbolo("g" + nombre) + f'\n<path d="{palabra}" fill="{tinta}"/>\n<path d="{lema}" fill="{lema_color}"/>'
+    for nombre, tinta, lema_color, cs in (("oscuro", "#ffffff", "#b9c3d6", (CIAN, VIOLETA)),
+                                          ("claro", "#0b1222", "#4b5563", (CIAN_OSC, VIOLETA_OSC))):
+        cuerpo = simbolo("g" + nombre, c1=cs[0], c2=cs[1]) + f'\n<path d="{palabra}" fill="{tinta}"/>\n<path d="{lema}" fill="{lema_color}"/>'
         (DIR / f"konek-logo-horizontal-{nombre}.svg").write_text(svg(ancho, 120, cuerpo), encoding="utf-8")
 
     avatar = (f'<defs><radialGradient id="bgav" cx="0.7" cy="0.2" r="0.9"><stop offset="0" stop-color="#12304a"/>'

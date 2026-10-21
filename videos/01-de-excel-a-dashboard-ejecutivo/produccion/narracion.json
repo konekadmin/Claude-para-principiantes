@@ -1,8 +1,5 @@
 {
-  "voz": "M1",
-  "idioma": "es",
-  "pasos": 12,
-  "velocidad": 0.92,
+  "_nota": "La voz (Supertonic 3, M1, 12 pasos, velocidad 0.92, español) viene de voz/voz.json. Para cambiarla solo en este video, agrega aquí \"voz\", \"pasos\", \"velocidad\" o \"idioma\".",
   "inicio": 0.6,
   "items": [
     {"sec": "hook", "id": "h1a", "text": "Esto…", "pause": 0.35},
@@ -95,8 +92,9 @@
     {"sec": "cierre", "id": "e1c", "text": "Nuevo archivo, nuevo chat, nuevo prompt.", "pause": 0.6},
     {"sec": "cierre", "id": "e2a", "text": "¿Y si no tuvieras que hacerlo nunca más?", "pause": 0.4},
     {"sec": "cierre", "id": "e2b", "text": "En el siguiente video te muestro cómo convertir este dashboard en un reporte que se actualiza solo cada mes: subes el archivo nuevo, o mejor aún, lo conectas a tus datos, y Claude hace el resto, incluida la narrativa para gerencia.", "pause": 0.4},
+    {"sec": "cierre", "id": "pantalla_final", "gap": 0.6},
     {"sec": "cierre", "id": "e3a", "text": "El video está aquí arriba.", "pause": 0.25},
     {"sec": "cierre", "id": "e3b", "text": "Nos vemos ahí.", "pause": 0.4},
-    {"sec": "cierre", "id": "endscreen", "gap": 20.0}
+    {"sec": "cierre", "id": "endscreen", "gap_hasta": "pantalla_final", "total": 20.0}
   ]
 }

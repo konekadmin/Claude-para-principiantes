@@ -138,8 +138,8 @@ html, body { margin: 0; padding: 0; background: var(--bg); }
 
 /* tarjetas de ideas */
 .idea { position: absolute; padding: 40px 44px; }
-.idea .n { width: 76px; height: 76px; border-radius: 20px; display: grid; place-items: center; font-family: "Inter Display", Inter; font-weight: 800; font-size: 44px; color: #04131a; background: var(--cyan); box-shadow: 0 0 30px #22d3ee55; }
-.idea .t { font-family: "Inter Display", Inter; font-weight: 800; font-size: 54px; line-height: 1.12; margin-top: 26px; letter-spacing: -0.015em; }
+.idea .n { width: 76px; height: 76px; border-radius: 20px; display: grid; place-items: center; font-family: "Inter Display", Inter, sans-serif; font-weight: 800; font-size: 44px; color: #04131a; background: var(--cyan); box-shadow: 0 0 30px #22d3ee55; }
+.idea .t { font-family: "Inter Display", Inter, sans-serif; font-weight: 800; font-size: 54px; line-height: 1.12; margin-top: 26px; letter-spacing: -0.015em; }
 
 /* comunidad / suscripción */
 .sub-btn { display: inline-flex; align-items: center; gap: 14px; padding: 20px 36px; border-radius: 999px; font-weight: 800; font-size: 32px; letter-spacing: 0.02em; }
